@@ -81,8 +81,10 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
     // Firebase dependencies
-    implementation "com.google.firebase:firebase-bom:27.0.0"
-    implementation "com.google.firebase:firebase-auth-ktx:20.0.4"
-    implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+
+    // google phone directory
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.11.3'
 
 }
