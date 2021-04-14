@@ -1,7 +1,8 @@
-package com.sayantanbanerjee.transactionmanagementapp
+package com.sayantanbanerjee.transactionmanagementapp.presenter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sayantanbanerjee.transactionmanagementapp.R
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

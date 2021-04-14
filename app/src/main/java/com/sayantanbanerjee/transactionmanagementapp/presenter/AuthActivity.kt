@@ -1,6 +1,8 @@
-package com.sayantanbanerjee.transactionmanagementapp
+package com.sayantanbanerjee.transactionmanagementapp.presenter
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,8 @@ import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.i18n.phonenumbers.NumberParseException
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
+import com.sayantanbanerjee.transactionmanagementapp.R
+import com.sayantanbanerjee.transactionmanagementapp.data.AppPreferenceHelper
 
 // This activity is called from the [SplashActivity.kt].
 // Here if user is not previously authenticated, then we authenticate the User using Firebase Auth.
@@ -18,11 +22,16 @@ import com.google.i18n.phonenumbers.Phonenumber
 // User is re-directed to the [HomeActivity.kt]
 class AuthActivity : AppCompatActivity() {
 
+    // Unique request code for Firebase Auth
     private val RC_SIGN_IN = 1
-    private var mUserPhoneNumber: String? = null
+
+    // This variable is used to declare a generalized user-number
     private lateinit var ANONYMOUS: String
+
+    private var mUserPhoneNumber: String? = null
     private lateinit var mFirebaseAuth: FirebaseAuth
     private var mAuthStateListener: AuthStateListener? = null
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onResume() {
         super.onResume()
@@ -42,15 +51,15 @@ class AuthActivity : AppCompatActivity() {
 
         ANONYMOUS = getString(R.string.ANONYMOUS)
         mFirebaseAuth = FirebaseAuth.getInstance()
-
+        sharedPreferences =
+            getSharedPreferences(getString(R.string.app_package_name), Context.MODE_PRIVATE)
 
         // Authentication Listener to listen to change of authentication
         mAuthStateListener = AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
             if (user != null) {
-                // If some user is already authenticated, store his phone number and then re-direct him to other task.
+                // If user is authenticated, call the onSignInInitialize() method.
                 mUserPhoneNumber = user.phoneNumber
-                Log.i("#####PHONE NUMBER", mUserPhoneNumber.toString())
                 onSignedInInitialize(mUserPhoneNumber.toString())
             } else {
                 // Authenticate user using the AuthUI Phone Builder.
@@ -73,11 +82,16 @@ class AuthActivity : AppCompatActivity() {
     }
 
     // Method called when user is successfully authenticated.
-    private fun onSignedInInitialize(username: String) {
+    // First store the basic general details into shared preference, i.e, authentication done, mobile number and ISO Code.
+    // After this re-direct him to the [HomeActivity.kt].
+    private fun onSignedInInitialize(mobileNumber: String) {
+        AppPreferenceHelper(sharedPreferences).setUserAuthenticated(true)
+        AppPreferenceHelper(sharedPreferences).setUserMobileNumber(mobileNumber)
         val phoneUtil: PhoneNumberUtil = PhoneNumberUtil.getInstance()
         try {
-            val numberProto: Phonenumber.PhoneNumber = phoneUtil.parse(username, "IN")
+            val numberProto: Phonenumber.PhoneNumber = phoneUtil.parse(mobileNumber, "IN")
             val countryCode: Int = numberProto.countryCode
+            AppPreferenceHelper(sharedPreferences).setUserISOCode(countryCode.toString())
             Log.i("#####COUNTRY CODE", countryCode.toString())
         } catch (e: NumberParseException) {
             System.err.println("NumberParseException was thrown: $e")
@@ -87,7 +101,7 @@ class AuthActivity : AppCompatActivity() {
         finish()
     }
 
-    // To sign-out from the Application and detach the listener
+    // To clean up when signing up!
     private fun onSignedOutCleanup() {
         mUserPhoneNumber = ANONYMOUS
         if (mAuthStateListener != null) {
@@ -99,6 +113,7 @@ class AuthActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
+                // all ok
             } else if (resultCode == RESULT_CANCELED) {
                 finish()
             }

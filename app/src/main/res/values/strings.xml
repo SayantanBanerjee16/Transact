@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_package_name">com.sayantanbanerjee.transactionmanagementapp</string>
     <string name="app_name">transactionmanagementapp</string>
     <string name="splash_image">splash_image</string>
     <string name="ANONYMOUS">ANONYMOUS</string>

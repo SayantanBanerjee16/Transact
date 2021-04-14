@@ -1,32 +1,46 @@
-package com.sayantanbanerjee.transactionmanagementapp
+package com.sayantanbanerjee.transactionmanagementapp.presenter
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.sayantanbanerjee.transactionmanagementapp.R
+import com.sayantanbanerjee.transactionmanagementapp.data.AppPreferenceHelper
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivitySplashBinding
+
 
 // Initial screen which is displayed in the application.
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
         supportActionBar?.hide()
+        sharedPreferences =
+            getSharedPreferences(getString(R.string.app_package_name), Context.MODE_PRIVATE)
         binding.splashImageView.animate().alphaBy(1f).duration = 1500
         delayFor1500msAndSwitchToAuthActivity()
     }
 
     // THe splash image is displayed for 1.5 seconds.
-    // So delay until its completely animated and then switch to the [AuthActivity.kt].
+    // So delay until its completely animated.
+    // If user is not authenticated, re-direct him to the [AuthActivity.kt].
+    // Else re-direct him to the [HomeActivity.kt].
     private fun delayFor1500msAndSwitchToAuthActivity() {
         object : CountDownTimer(1500, 1000) {
             override fun onTick(l: Long) {}
             override fun onFinish() {
-                val intent: Intent = Intent(this@SplashActivity, AuthActivity::class.java)
+                val intent = if (AppPreferenceHelper(sharedPreferences).isUserAuthenticated()) {
+                    Intent(this@SplashActivity, HomeActivity::class.java)
+                } else {
+                    Intent(this@SplashActivity, AuthActivity::class.java)
+                }
                 startActivity(intent)
                 finish()
             }
