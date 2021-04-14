@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "63252570638",
+    "project_id": "transaction-management-app",
+    "storage_bucket": "transaction-management-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63252570638:android:9b5547f0b7f4b3e25a925f",
+        "android_client_info": {
+          "package_name": "com.sayantanbanerjee.transactionmanagementapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63252570638-qa1sbctambcd6oh7idngibluara800gm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sayantanbanerjee.transactionmanagementapp",
+            "certificate_hash": "671419aca386c2468c7e3073473e980c7cda1c9e"
+          }
+        },
+        {
+          "client_id": "63252570638-9c8tpd6bk7h2euaf7g5b83kva8msfv20.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzxvIPbd-2VWrQswL8XqleUFtsgZULu3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "63252570638-9c8tpd6bk7h2euaf7g5b83kva8msfv20.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
