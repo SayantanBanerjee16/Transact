@@ -1,10 +1,10 @@
+@file:Suppress("DEPRECATION")
+
 package com.sayantanbanerjee.transactionmanagementapp.presenter
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.AuthUI.IdpConfig.PhoneBuilder
@@ -15,11 +15,15 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
 import com.sayantanbanerjee.transactionmanagementapp.R
 import com.sayantanbanerjee.transactionmanagementapp.data.AppPreferenceHelper
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 // This activity is called from the [SplashActivity.kt].
 // Here if user is not previously authenticated, then we authenticate the User using Firebase Auth.
 // An OTP is sent to the user, and after successful verification, Data is stored in the shared preference.
 // User is re-directed to the [HomeActivity.kt]
+
+@AndroidEntryPoint
 class AuthActivity : AppCompatActivity() {
 
     // Unique request code for Firebase Auth
@@ -31,7 +35,9 @@ class AuthActivity : AppCompatActivity() {
     private var mUserPhoneNumber: String? = null
     private lateinit var mFirebaseAuth: FirebaseAuth
     private var mAuthStateListener: AuthStateListener? = null
-    private lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onResume() {
         super.onResume()
@@ -51,8 +57,6 @@ class AuthActivity : AppCompatActivity() {
 
         ANONYMOUS = getString(R.string.ANONYMOUS)
         mFirebaseAuth = FirebaseAuth.getInstance()
-        sharedPreferences =
-            getSharedPreferences(getString(R.string.app_package_name), Context.MODE_PRIVATE)
 
         // Authentication Listener to listen to change of authentication
         mAuthStateListener = AuthStateListener { firebaseAuth ->
@@ -92,7 +96,6 @@ class AuthActivity : AppCompatActivity() {
             val numberProto: Phonenumber.PhoneNumber = phoneUtil.parse(mobileNumber, "IN")
             val countryCode: Int = numberProto.countryCode
             AppPreferenceHelper(sharedPreferences).setUserISOCode(countryCode.toString())
-            Log.i("#####COUNTRY CODE", countryCode.toString())
         } catch (e: NumberParseException) {
             System.err.println("NumberParseException was thrown: $e")
         }
