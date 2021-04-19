@@ -3,4 +3,6 @@
     <string name="app_name">transactionmanagementapp</string>
     <string name="splash_image">splash_image</string>
     <string name="ANONYMOUS">ANONYMOUS</string>
+    <string name="activity_transaction">activity_transaction</string>
+    <string name="add_transaction_to_database">Add transaction</string>
 </resources>
