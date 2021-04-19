@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.sayantanbanerjee.transactionmanagementapp.R
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivityHomeBinding
+import com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage.TransactionActivity
 
 class HomeActivity : AppCompatActivity() {
 
