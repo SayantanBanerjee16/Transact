@@ -1,4 +1,4 @@
-package com.sayantanbanerjee.transactionmanagementapp.data
+package com.sayantanbanerjee.transactionmanagementapp.data.preference
 
 import android.content.SharedPreferences
 

@@ -14,7 +14,7 @@ import com.google.i18n.phonenumbers.NumberParseException
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
 import com.sayantanbanerjee.transactionmanagementapp.R
-import com.sayantanbanerjee.transactionmanagementapp.data.AppPreferenceHelper
+import com.sayantanbanerjee.transactionmanagementapp.data.preference.AppPreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

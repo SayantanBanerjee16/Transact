@@ -7,7 +7,7 @@ import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.sayantanbanerjee.transactionmanagementapp.R
-import com.sayantanbanerjee.transactionmanagementapp.data.AppPreferenceHelper
+import com.sayantanbanerjee.transactionmanagementapp.data.preference.AppPreferenceHelper
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivitySplashBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

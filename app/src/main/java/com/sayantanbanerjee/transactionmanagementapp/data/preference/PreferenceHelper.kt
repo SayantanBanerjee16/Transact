@@ -1,4 +1,4 @@
-package com.sayantanbanerjee.transactionmanagementapp.data
+package com.sayantanbanerjee.transactionmanagementapp.data.preference
 
 // Interface which defines all the methods to be called in usage of Shared Preference in the application.
 interface PreferenceHelper {
