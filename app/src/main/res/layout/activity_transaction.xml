@@ -36,5 +36,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/updateAcceptTransactionToDatabase" />
 
+        <TextView
+            android:id="@+id/acceptedSentSum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:text="@string/accepted_sent_sum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateRejectTransactionToDatabase" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

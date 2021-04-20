@@ -6,4 +6,5 @@ import com.sayantanbanerjee.transactionmanagementapp.data.model.Record
 interface RecordLocalDataSource {
     suspend fun saveRecordToDB(record: Record)
     suspend fun updateRecordStatusToDB(status: String, id: Int)
+    suspend fun fetchAcceptedSentAmountFromDB() : Int
 }

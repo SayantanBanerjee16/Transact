@@ -5,6 +5,7 @@ import com.sayantanbanerjee.transactionmanagementapp.R
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivityTransactionBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,19 +26,26 @@ class TransactionActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_transaction)
         viewModel = ViewModelProvider(this, factory).get(TransactionViewModel::class.java)
 
+        viewModel.getSumSentAcceptedValue()
+
         binding.addTransactionToDatabase.setOnClickListener {
             viewModel.saveRecord()
             Toast.makeText(this, "Database Row Added", Toast.LENGTH_SHORT).show()
         }
 
-        binding.updateAcceptTransactionToDatabase.setOnClickListener{
+        binding.updateAcceptTransactionToDatabase.setOnClickListener {
             viewModel.updateAsAccepted()
             Toast.makeText(this, "Database Row marked ACCEPTED", Toast.LENGTH_SHORT).show()
         }
 
-        binding.updateRejectTransactionToDatabase.setOnClickListener{
+        binding.updateRejectTransactionToDatabase.setOnClickListener {
             viewModel.updateAsReject()
             Toast.makeText(this, "Database Row marked REJECTED", Toast.LENGTH_SHORT).show()
         }
+
+        viewModel.acceptSumSent.observe(this, Observer {
+            binding.acceptedSentSum.text = it.toString()
+        })
+
     }
 }

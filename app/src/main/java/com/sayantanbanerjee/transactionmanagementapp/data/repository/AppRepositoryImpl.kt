@@ -15,4 +15,8 @@ class AppRepositoryImpl(
     override suspend fun updateRecordStatus(status: String, id: Int) {
         recordLocalDataSource.updateRecordStatusToDB(status, id)
     }
+
+    override suspend fun fetchAcceptedSentAmountFromDB(): Int {
+        return recordLocalDataSource.fetchAcceptedSentAmountFromDB()
+    }
 }

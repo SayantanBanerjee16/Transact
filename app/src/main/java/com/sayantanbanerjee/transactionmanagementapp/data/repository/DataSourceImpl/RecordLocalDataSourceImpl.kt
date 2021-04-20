@@ -20,4 +20,8 @@ class RecordLocalDataSourceImpl(
             recordDAO.updateRecordAsRejected(id)
         }
     }
+
+    override suspend fun fetchAcceptedSentAmountFromDB(): Int{
+        return recordDAO.getAcceptedSumSent()
+    }
 }
