@@ -1,6 +1,7 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.di
 
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
+import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.UpdateRecordStatusUseCase
 import com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage.TransactionViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -16,10 +17,12 @@ class FactoryModule {
     @Singleton
     @Provides
     fun providesTransactionViewModelFactory(
-        saveRecordUseCase: SaveRecordUseCase
+        saveRecordUseCase: SaveRecordUseCase,
+        updateRecordStatusUseCase: UpdateRecordStatusUseCase
     ): TransactionViewModelFactory {
         return TransactionViewModelFactory(
-            saveRecordUseCase
+            saveRecordUseCase,
+            updateRecordStatusUseCase
         )
     }
 }

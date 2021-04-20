@@ -11,4 +11,8 @@ class AppRepositoryImpl(
     override suspend fun saveRecord(record: Record) {
         recordLocalDataSource.saveRecordToDB(record)
     }
+
+    override suspend fun updateRecordStatus(status: String, id: Int) {
+        recordLocalDataSource.updateRecordStatusToDB(status, id)
+    }
 }

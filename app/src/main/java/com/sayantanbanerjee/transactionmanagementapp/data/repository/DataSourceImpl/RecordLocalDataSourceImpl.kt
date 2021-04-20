@@ -12,4 +12,12 @@ class RecordLocalDataSourceImpl(
     override suspend fun saveRecordToDB(record: Record) {
         recordDAO.insert(record)
     }
+
+    override suspend fun updateRecordStatusToDB(status: String, id: Int) {
+        if(status == "ACCEPTED"){
+            recordDAO.updateRecordAsAccepted(id)
+        }else{
+            recordDAO.updateRecordAsRejected(id)
+        }
+    }
 }

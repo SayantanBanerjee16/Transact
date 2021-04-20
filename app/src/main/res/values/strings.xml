@@ -5,4 +5,6 @@
     <string name="ANONYMOUS">ANONYMOUS</string>
     <string name="activity_transaction">activity_transaction</string>
     <string name="add_transaction_to_database">Add transaction</string>
+    <string name="update_as_accept">Update Accept</string>
+    <string name="update_as_reject">Update Reject</string>
 </resources>

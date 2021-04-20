@@ -1,6 +1,7 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.di
 
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
+import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.UpdateRecordStatusUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.repository.AppRepository
 import dagger.Module
 import dagger.Provides
@@ -17,6 +18,12 @@ class UseCaseModule {
     @Provides
     fun providesSaveRecordUseCase(appRepository: AppRepository): SaveRecordUseCase {
         return SaveRecordUseCase(appRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesUpdateRecordStatusUseCase(appRepository: AppRepository): UpdateRecordStatusUseCase {
+        return UpdateRecordStatusUseCase(appRepository)
     }
 
 }

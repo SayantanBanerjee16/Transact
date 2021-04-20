@@ -29,5 +29,15 @@ class TransactionActivity : AppCompatActivity() {
             viewModel.saveRecord()
             Toast.makeText(this, "Database Row Added", Toast.LENGTH_SHORT).show()
         }
+
+        binding.updateAcceptTransactionToDatabase.setOnClickListener{
+            viewModel.updateAsAccepted()
+            Toast.makeText(this, "Database Row marked ACCEPTED", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.updateRejectTransactionToDatabase.setOnClickListener{
+            viewModel.updateAsReject()
+            Toast.makeText(this, "Database Row marked REJECTED", Toast.LENGTH_SHORT).show()
+        }
     }
 }
