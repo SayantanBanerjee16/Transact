@@ -1,10 +1,12 @@
 package com.sayantanbanerjee.transactionmanagementapp.data.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.sayantanbanerjee.transactionmanagementapp.data.model.Record
+import kotlinx.coroutines.flow.Flow
 
 // DAO Interface which defines all the methods which queries SQL statements into the database,
 // and the resultant required data is returned as required.
@@ -22,5 +24,5 @@ interface RecordDAO {
 
 
     @Query("SELECT COALESCE(sum(COALESCE(record_amount_involved,0)), 0) FROM records WHERE record_parity = 1 AND record_status = 'ACCEPTED' ")
-    suspend fun getAcceptedSumSent(): Int
+    fun getAcceptedSumSent(): Flow<Int>
 }

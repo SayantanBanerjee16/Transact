@@ -5,6 +5,7 @@ import com.sayantanbanerjee.transactionmanagementapp.data.model.Record
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetAcceptedSumSentUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.UpdateRecordStatusUseCase
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class TransactionViewModel(
@@ -38,8 +39,10 @@ class TransactionViewModel(
         //  updateRecordStatusUseCase.execute("REJECTED", 7)
     }
 
-    fun getSumSentAcceptedValue()  = viewModelScope.launch{
-        acceptSumSent.postValue(getAcceptedSumSentUseCase.execute())
+    fun getSumSentAcceptedValue()  = liveData {
+        getAcceptedSumSentUseCase.execute().collect {
+            emit(it)
+        }
     }
 
 

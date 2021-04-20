@@ -1,8 +1,10 @@
 package com.sayantanbanerjee.transactionmanagementapp.data.repository
 
+import androidx.lifecycle.LiveData
 import com.sayantanbanerjee.transactionmanagementapp.data.model.Record
 import com.sayantanbanerjee.transactionmanagementapp.data.repository.DataSource.RecordLocalDataSource
 import com.sayantanbanerjee.transactionmanagementapp.domain.repository.AppRepository
+import kotlinx.coroutines.flow.Flow
 
 // Class defining the functionality to the methods described in the [AppRepository.kt] interface in the Domain section
 class AppRepositoryImpl(
@@ -16,7 +18,7 @@ class AppRepositoryImpl(
         recordLocalDataSource.updateRecordStatusToDB(status, id)
     }
 
-    override suspend fun fetchAcceptedSentAmountFromDB(): Int {
+    override fun fetchAcceptedSentAmountFromDB(): Flow<Int> {
         return recordLocalDataSource.fetchAcceptedSentAmountFromDB()
     }
 }

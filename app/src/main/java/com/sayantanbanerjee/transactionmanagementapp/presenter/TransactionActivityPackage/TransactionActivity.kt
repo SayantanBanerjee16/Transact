@@ -26,8 +26,6 @@ class TransactionActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_transaction)
         viewModel = ViewModelProvider(this, factory).get(TransactionViewModel::class.java)
 
-        viewModel.getSumSentAcceptedValue()
-
         binding.addTransactionToDatabase.setOnClickListener {
             viewModel.saveRecord()
             Toast.makeText(this, "Database Row Added", Toast.LENGTH_SHORT).show()
@@ -43,7 +41,7 @@ class TransactionActivity : AppCompatActivity() {
             Toast.makeText(this, "Database Row marked REJECTED", Toast.LENGTH_SHORT).show()
         }
 
-        viewModel.acceptSumSent.observe(this, Observer {
+        viewModel.getSumSentAcceptedValue().observe(this, Observer {
             binding.acceptedSentSum.text = it.toString()
         })
 

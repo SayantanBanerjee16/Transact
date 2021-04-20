@@ -1,8 +1,10 @@
 package com.sayantanbanerjee.transactionmanagementapp.data.repository.DataSourceImpl
 
+import androidx.lifecycle.LiveData
 import com.sayantanbanerjee.transactionmanagementapp.data.db.RecordDAO
 import com.sayantanbanerjee.transactionmanagementapp.data.model.Record
 import com.sayantanbanerjee.transactionmanagementapp.data.repository.DataSource.RecordLocalDataSource
+import kotlinx.coroutines.flow.Flow
 
 // Class defining the functionality to the methods described in the [RecordLocalDataSource.kt] interface
 class RecordLocalDataSourceImpl(
@@ -21,7 +23,7 @@ class RecordLocalDataSourceImpl(
         }
     }
 
-    override suspend fun fetchAcceptedSentAmountFromDB(): Int{
+    override fun fetchAcceptedSentAmountFromDB(): Flow<Int> {
         return recordDAO.getAcceptedSumSent()
     }
 }
