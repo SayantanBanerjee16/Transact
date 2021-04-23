@@ -21,4 +21,8 @@ class AppRepositoryImpl(
     override fun fetchAcceptedSentAmountFromDB(): Flow<Int> {
         return recordLocalDataSource.fetchAcceptedSentAmountFromDB()
     }
+
+    override fun fetchSumReceivedFromDB(): Flow<Int> {
+        return recordLocalDataSource.getSumReceivedFromDB()
+    }
 }

@@ -26,4 +26,8 @@ class RecordLocalDataSourceImpl(
     override fun fetchAcceptedSentAmountFromDB(): Flow<Int> {
         return recordDAO.getAcceptedSumSent()
     }
+
+    override fun getSumReceivedFromDB() : Flow<Int>{
+        return recordDAO.getSumReceived()
+    }
 }

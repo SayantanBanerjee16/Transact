@@ -9,4 +9,5 @@ interface AppRepository {
     suspend fun saveRecord(record: Record)
     suspend fun updateRecordStatus(status: String, id: Int)
     fun fetchAcceptedSentAmountFromDB(): Flow<Int>
+    fun fetchSumReceivedFromDB(): Flow<Int>
 }

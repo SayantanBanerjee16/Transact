@@ -8,4 +8,5 @@
     <string name="update_as_accept">Update Accept</string>
     <string name="update_as_reject">Update Reject</string>
     <string name="accepted_sent_sum">ACCEPTED SENT SUM</string>
+    <string name="accepted_received_sum">RECEIVED SUM</string>
 </resources>

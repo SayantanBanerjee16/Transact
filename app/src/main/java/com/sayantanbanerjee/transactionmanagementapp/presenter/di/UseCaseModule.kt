@@ -1,6 +1,7 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.di
 
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetAcceptedSumSentUseCase
+import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetSumReceivedUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.UpdateRecordStatusUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.repository.AppRepository
@@ -31,6 +32,12 @@ class UseCaseModule {
     @Provides
     fun providesAcceptedSumSentUseCase(appRepository: AppRepository): GetAcceptedSumSentUseCase {
         return GetAcceptedSumSentUseCase(appRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesSumReceivedUseCase(appRepository: AppRepository): GetSumReceivedUseCase {
+        return GetSumReceivedUseCase(appRepository)
     }
 
 }

@@ -25,4 +25,7 @@ interface RecordDAO {
 
     @Query("SELECT COALESCE(sum(COALESCE(record_amount_involved,0)), 0) FROM records WHERE record_parity = 1 AND record_status = 'ACCEPTED' ")
     fun getAcceptedSumSent(): Flow<Int>
+
+    @Query("SELECT COALESCE(sum(COALESCE(record_amount_involved,0)), 0) FROM records WHERE record_parity = 0 AND record_status = 'ACCEPTED' ")
+    fun getSumReceived(): Flow<Int>
 }

@@ -1,6 +1,7 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.di
 
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetAcceptedSumSentUseCase
+import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetSumReceivedUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.UpdateRecordStatusUseCase
 import com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage.TransactionViewModelFactory
@@ -20,12 +21,14 @@ class FactoryModule {
     fun providesTransactionViewModelFactory(
         saveRecordUseCase: SaveRecordUseCase,
         updateRecordStatusUseCase: UpdateRecordStatusUseCase,
-        getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase
+        getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
+        getSumReceivedUseCase: GetSumReceivedUseCase
     ): TransactionViewModelFactory {
         return TransactionViewModelFactory(
             saveRecordUseCase,
             updateRecordStatusUseCase,
-            getAcceptedSumSentUseCase
+            getAcceptedSumSentUseCase,
+            getSumReceivedUseCase
         )
     }
 }

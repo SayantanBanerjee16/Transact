@@ -45,5 +45,9 @@ class TransactionActivity : AppCompatActivity() {
             binding.acceptedSentSum.text = it.toString()
         })
 
+        viewModel.getSumReceivedValue().observe(this, Observer {
+            binding.receivedSum.text = it.toString()
+        })
+
     }
 }

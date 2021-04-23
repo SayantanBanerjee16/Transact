@@ -3,6 +3,7 @@ package com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActiv
 import androidx.lifecycle.*
 import com.sayantanbanerjee.transactionmanagementapp.data.model.Record
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetAcceptedSumSentUseCase
+import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetSumReceivedUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.UpdateRecordStatusUseCase
 import kotlinx.coroutines.flow.collect
@@ -11,7 +12,8 @@ import kotlinx.coroutines.launch
 class TransactionViewModel(
     private val saveRecordUseCase: SaveRecordUseCase,
     private val updateRecordStatusUseCase: UpdateRecordStatusUseCase,
-    private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase
+    private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
+    private val getSumReceivedUseCase: GetSumReceivedUseCase
 ) : ViewModel() {
 
      var acceptSumSent : MutableLiveData<Int> = MutableLiveData()
@@ -41,6 +43,12 @@ class TransactionViewModel(
 
     fun getSumSentAcceptedValue()  = liveData {
         getAcceptedSumSentUseCase.execute().collect {
+            emit(it)
+        }
+    }
+
+    fun getSumReceivedValue()  = liveData {
+        getSumReceivedUseCase.execute().collect {
             emit(it)
         }
     }
