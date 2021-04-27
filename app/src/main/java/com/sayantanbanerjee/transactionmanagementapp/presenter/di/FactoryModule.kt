@@ -17,14 +17,12 @@ class FactoryModule {
     @Provides
     fun providesTransactionViewModelFactory(
         saveRecordUseCase: SaveRecordUseCase,
-        updateRecordStatusUseCase: UpdateRecordStatusUseCase,
         getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
         getSumReceivedUseCase: GetSumReceivedUseCase,
         getAllRecordsUseCase: GetAllRecordsUseCase
     ): TransactionViewModelFactory {
         return TransactionViewModelFactory(
             saveRecordUseCase,
-            updateRecordStatusUseCase,
             getAcceptedSumSentUseCase,
             getSumReceivedUseCase,
             getAllRecordsUseCase

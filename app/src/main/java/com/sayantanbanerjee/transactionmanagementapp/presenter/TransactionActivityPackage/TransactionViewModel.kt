@@ -8,7 +8,6 @@ import kotlinx.coroutines.launch
 
 class TransactionViewModel(
     private val saveRecordUseCase: SaveRecordUseCase,
-    private val updateRecordStatusUseCase: UpdateRecordStatusUseCase,
     private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
     private val getSumReceivedUseCase: GetSumReceivedUseCase,
     private val getAllRecordsUseCase: GetAllRecordsUseCase
@@ -23,20 +22,10 @@ class TransactionViewModel(
             0,
             "+919434792685",
             15,
-            0, currentTimestamp.toString(),
+            1, currentTimestamp.toString(),
             "ACCEPTED"
         )
         saveRecordUseCase.execute(record)
-    }
-
-    // update transaction as accepted to local database
-    fun updateAsAccepted() = viewModelScope.launch {
-        //   updateRecordStatusUseCase.execute("ACCEPTED", 6)
-    }
-
-    // update transaction as rejected to local database
-    fun updateAsReject() = viewModelScope.launch {
-        //  updateRecordStatusUseCase.execute("REJECTED", 7)
     }
 
     fun getSumSentAcceptedValue()  = liveData {

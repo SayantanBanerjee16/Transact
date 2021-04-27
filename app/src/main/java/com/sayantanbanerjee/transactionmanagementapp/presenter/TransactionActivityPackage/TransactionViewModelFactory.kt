@@ -6,7 +6,6 @@ import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
 
 class TransactionViewModelFactory(
     private val saveRecordUseCase: SaveRecordUseCase,
-    private val updateRecordStatusUseCase: UpdateRecordStatusUseCase,
     private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
     private val getSumReceivedUseCase: GetSumReceivedUseCase,
     private val getAllRecordsUseCase: GetAllRecordsUseCase
@@ -14,7 +13,6 @@ class TransactionViewModelFactory(
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return TransactionViewModel(
             saveRecordUseCase,
-            updateRecordStatusUseCase,
             getAcceptedSumSentUseCase,
             getSumReceivedUseCase,
             getAllRecordsUseCase

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -9,54 +9,46 @@
         android:padding="32dp"
         tools:context=".presenter.TransactionActivityPackage.TransactionActivity">
 
-        <Button
-            android:id="@+id/addTransactionToDatabase"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_transaction_to_database"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/updateAcceptTransactionToDatabase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/update_as_accept"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addTransactionToDatabase" />
-
-        <Button
-            android:id="@+id/updateRejectTransactionToDatabase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/update_as_reject"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateAcceptTransactionToDatabase" />
+            android:clickable="true"
+            android:contentDescription="@string/add_items"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/acceptedSentSum"
+            app:srcCompat="@drawable/ic_baseline_add_circle_24" />
 
         <TextView
             android:id="@+id/acceptedSentSum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/accepted_sent_sum"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:text="@string/accepted_sent_sum"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateRejectTransactionToDatabase" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/receivedSum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/accepted_received_sum"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:text="@string/accepted_received_sum"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/acceptedSentSum" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transactionRecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/receivedSum" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

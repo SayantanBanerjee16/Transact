@@ -27,19 +27,9 @@ class TransactionActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_transaction)
         viewModel = ViewModelProvider(this, factory).get(TransactionViewModel::class.java)
 
-        binding.addTransactionToDatabase.setOnClickListener {
+        binding.floatingActionButton.setOnClickListener {
             viewModel.saveRecord()
             Toast.makeText(this, "Database Row Added", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.updateAcceptTransactionToDatabase.setOnClickListener {
-            viewModel.updateAsAccepted()
-            Toast.makeText(this, "Database Row marked ACCEPTED", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.updateRejectTransactionToDatabase.setOnClickListener {
-            viewModel.updateAsReject()
-            Toast.makeText(this, "Database Row marked REJECTED", Toast.LENGTH_SHORT).show()
         }
 
         viewModel.getSumSentAcceptedValue().observe(this, Observer {

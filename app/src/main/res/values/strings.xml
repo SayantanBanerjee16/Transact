@@ -9,4 +9,9 @@
     <string name="update_as_reject">Update Reject</string>
     <string name="accepted_sent_sum">ACCEPTED SENT SUM</string>
     <string name="accepted_received_sum">RECEIVED SUM</string>
+    <string name="phone_number">PHONE NUMBER</string>
+    <string name="amount_in_the_transaction">AMOUNT IN THE TRANSACTION</string>
+    <string name="parity">PARITY</string>
+    <string name="status">STATUS</string>
+    <string name="add_items">add_items</string>
 </resources>
