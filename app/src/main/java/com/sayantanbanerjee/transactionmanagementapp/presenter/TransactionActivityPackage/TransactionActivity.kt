@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivityTransactionBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -20,12 +21,17 @@ class TransactionActivity : AppCompatActivity() {
     @Inject
     lateinit var factory: TransactionViewModelFactory
 
+    @Inject
+    lateinit var transactionAdapter: TransactionAdapter
+
     lateinit var viewModel: TransactionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_transaction)
         viewModel = ViewModelProvider(this, factory).get(TransactionViewModel::class.java)
+
+        initRecyclerView()
 
         binding.floatingActionButton.setOnClickListener {
             viewModel.saveRecord()
@@ -41,8 +47,13 @@ class TransactionActivity : AppCompatActivity() {
         })
 
         viewModel.getAllRecords().observe(this, {
-            Log.i("######", it.toString())
+            transactionAdapter.differ.submitList(it)
         })
 
+    }
+
+    private fun initRecyclerView() {
+        binding.transactionRecyclerView.adapter = transactionAdapter
+        binding.transactionRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 }

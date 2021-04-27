@@ -21,8 +21,8 @@ class TransactionViewModel(
         val record = Record(
             0,
             "+919434792685",
-            15,
-            1, currentTimestamp.toString(),
+            20,
+            0, currentTimestamp.toString(),
             "ACCEPTED"
         )
         saveRecordUseCase.execute(record)

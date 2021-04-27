@@ -13,9 +13,9 @@
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:clickable="true"
             android:contentDescription="@string/add_items"
-            android:layout_margin="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/acceptedSentSum"
             app:srcCompat="@drawable/ic_baseline_add_circle_24" />
@@ -44,8 +44,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/transactionRecyclerView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/receivedSum" />
