@@ -1,9 +1,6 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.di
 
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetAcceptedSumSentUseCase
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetSumReceivedUseCase
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.UpdateRecordStatusUseCase
+import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
 import com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage.TransactionViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -22,13 +19,15 @@ class FactoryModule {
         saveRecordUseCase: SaveRecordUseCase,
         updateRecordStatusUseCase: UpdateRecordStatusUseCase,
         getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
-        getSumReceivedUseCase: GetSumReceivedUseCase
+        getSumReceivedUseCase: GetSumReceivedUseCase,
+        getAllRecordsUseCase: GetAllRecordsUseCase
     ): TransactionViewModelFactory {
         return TransactionViewModelFactory(
             saveRecordUseCase,
             updateRecordStatusUseCase,
             getAcceptedSumSentUseCase,
-            getSumReceivedUseCase
+            getSumReceivedUseCase,
+            getAllRecordsUseCase
         )
     }
 }

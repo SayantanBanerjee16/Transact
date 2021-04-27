@@ -10,4 +10,5 @@ interface RecordLocalDataSource {
     suspend fun updateRecordStatusToDB(status: String, id: Int)
     fun fetchAcceptedSentAmountFromDB() : Flow<Int>
     fun getSumReceivedFromDB() : Flow<Int>
+    fun getAllRecords() : Flow<List<Record>>
 }

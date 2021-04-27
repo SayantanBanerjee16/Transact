@@ -1,9 +1,6 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.di
 
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetAcceptedSumSentUseCase
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetSumReceivedUseCase
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.UpdateRecordStatusUseCase
+import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
 import com.sayantanbanerjee.transactionmanagementapp.domain.repository.AppRepository
 import dagger.Module
 import dagger.Provides
@@ -38,6 +35,12 @@ class UseCaseModule {
     @Provides
     fun providesSumReceivedUseCase(appRepository: AppRepository): GetSumReceivedUseCase {
         return GetSumReceivedUseCase(appRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesGetAllRecordsUseCase(appRepository: AppRepository): GetAllRecordsUseCase {
+        return GetAllRecordsUseCase(appRepository)
     }
 
 }

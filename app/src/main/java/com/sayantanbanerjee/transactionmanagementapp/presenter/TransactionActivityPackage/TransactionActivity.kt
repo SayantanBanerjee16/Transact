@@ -3,6 +3,7 @@ package com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActiv
 import androidx.appcompat.app.AppCompatActivity
 import com.sayantanbanerjee.transactionmanagementapp.R
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -47,6 +48,10 @@ class TransactionActivity : AppCompatActivity() {
 
         viewModel.getSumReceivedValue().observe(this, Observer {
             binding.receivedSum.text = it.toString()
+        })
+
+        viewModel.getAllRecords().observe(this, {
+            Log.i("######", it.toString())
         })
 
     }

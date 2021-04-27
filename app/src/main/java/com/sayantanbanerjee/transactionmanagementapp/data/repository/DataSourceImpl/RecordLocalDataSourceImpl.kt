@@ -16,9 +16,9 @@ class RecordLocalDataSourceImpl(
     }
 
     override suspend fun updateRecordStatusToDB(status: String, id: Int) {
-        if(status == "ACCEPTED"){
+        if (status == "ACCEPTED") {
             recordDAO.updateRecordAsAccepted(id)
-        }else{
+        } else {
             recordDAO.updateRecordAsRejected(id)
         }
     }
@@ -27,7 +27,11 @@ class RecordLocalDataSourceImpl(
         return recordDAO.getAcceptedSumSent()
     }
 
-    override fun getSumReceivedFromDB() : Flow<Int>{
+    override fun getSumReceivedFromDB(): Flow<Int> {
         return recordDAO.getSumReceived()
+    }
+
+    override fun getAllRecords(): Flow<List<Record>> {
+        return recordDAO.getAllRecords()
     }
 }

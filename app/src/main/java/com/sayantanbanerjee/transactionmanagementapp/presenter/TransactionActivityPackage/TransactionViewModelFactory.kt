@@ -2,23 +2,22 @@ package com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActiv
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetAcceptedSumSentUseCase
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.GetSumReceivedUseCase
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
-import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.UpdateRecordStatusUseCase
+import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
 
 class TransactionViewModelFactory(
     private val saveRecordUseCase: SaveRecordUseCase,
     private val updateRecordStatusUseCase: UpdateRecordStatusUseCase,
     private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
-    private val getSumReceivedUseCase: GetSumReceivedUseCase
+    private val getSumReceivedUseCase: GetSumReceivedUseCase,
+    private val getAllRecordsUseCase: GetAllRecordsUseCase
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return TransactionViewModel(
             saveRecordUseCase,
             updateRecordStatusUseCase,
             getAcceptedSumSentUseCase,
-            getSumReceivedUseCase
+            getSumReceivedUseCase,
+            getAllRecordsUseCase
         ) as T
     }
 }
