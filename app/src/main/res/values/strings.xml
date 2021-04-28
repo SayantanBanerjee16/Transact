@@ -14,4 +14,9 @@
     <string name="parity">PARITY</string>
     <string name="status">STATUS</string>
     <string name="add_items">add_items</string>
+    <string name="enter_phone_number">ENTER PHONE NUMBER</string>
+    <string name="enter_amount_involved">AMOUNT INVOLVED</string>
+    <string name="amount_received">Amount Received</string>
+    <string name="amount_sent">Amount Sent</string>
+    <string name="generate_qr_code">GENERATE QR CODE</string>
 </resources>

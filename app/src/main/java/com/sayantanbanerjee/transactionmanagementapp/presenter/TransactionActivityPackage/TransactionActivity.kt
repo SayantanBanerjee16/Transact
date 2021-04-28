@@ -1,5 +1,6 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.sayantanbanerjee.transactionmanagementapp.R
 import android.os.Bundle
@@ -9,7 +10,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sayantanbanerjee.transactionmanagementapp.data.preference.AppPreferenceHelper
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivityTransactionBinding
+import com.sayantanbanerjee.transactionmanagementapp.presenter.AddRecordActivity
+import com.sayantanbanerjee.transactionmanagementapp.presenter.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -34,8 +38,8 @@ class TransactionActivity : AppCompatActivity() {
         initRecyclerView()
 
         binding.floatingActionButton.setOnClickListener {
-            viewModel.saveRecord()
-            Toast.makeText(this, "Database Row Added", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@TransactionActivity, AddRecordActivity::class.java)
+            startActivity(intent)
         }
 
         viewModel.getSumSentAcceptedValue().observe(this, Observer {
