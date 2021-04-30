@@ -19,4 +19,5 @@
     <string name="amount_received">Amount Received</string>
     <string name="amount_sent">Amount Sent</string>
     <string name="generate_qr_code">GENERATE QR CODE</string>
+    <string name="qr_code_place_holder">QR CODE PLACE HOLDER</string>
 </resources>
