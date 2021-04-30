@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.sayantanbanerjee.transactionmanagementapp.R
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivityHomeBinding
+import com.sayantanbanerjee.transactionmanagementapp.presenter.ScanningActivityPackage.ScanningActivity
 import com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage.TransactionActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -17,6 +18,11 @@ class HomeActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         binding.routeToTransactionActivity.setOnClickListener {
             val intent = Intent(this, TransactionActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.routeToScanningActivity.setOnClickListener {
+            val intent = Intent(this, ScanningActivity::class.java)
             startActivity(intent)
         }
     }

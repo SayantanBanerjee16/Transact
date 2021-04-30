@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".presenter.ScanningActivityPackage.ScanningActivity"></activity>
         <activity
             android:name=".presenter.AddRecordActivityPackage.AddRecordActivity"
             android:screenOrientation="portrait" />
@@ -35,7 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"

@@ -3,6 +3,7 @@ package com.sayantanbanerjee.transactionmanagementapp.presenter.di
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
 import com.sayantanbanerjee.transactionmanagementapp.presenter.AddRecordActivityPackage.AddRecordViewModel
 import com.sayantanbanerjee.transactionmanagementapp.presenter.AddRecordActivityPackage.AddRecordViewModelFactory
+import com.sayantanbanerjee.transactionmanagementapp.presenter.ScanningActivityPackage.ScanningViewModelFactory
 import com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage.TransactionViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -38,6 +39,17 @@ class FactoryModule {
         saveRecordUseCase: SaveRecordUseCase
     ): AddRecordViewModelFactory {
         return AddRecordViewModelFactory(
+            saveRecordUseCase
+        )
+    }
+
+    // provided the view model factory class for the ScanningViewModelFactory
+    @Singleton
+    @Provides
+    fun providesScanningViewModelFactory(
+        saveRecordUseCase: SaveRecordUseCase
+    ): ScanningViewModelFactory {
+        return ScanningViewModelFactory(
             saveRecordUseCase
         )
     }
