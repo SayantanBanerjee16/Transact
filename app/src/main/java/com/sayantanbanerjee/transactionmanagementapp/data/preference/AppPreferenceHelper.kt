@@ -24,7 +24,7 @@ class AppPreferenceHelper(private val sharedPreferences: SharedPreferences) : Pr
         sharedPreferences.edit().putString(PREF_KEY_ISO_CODE, isoCode).apply()
     }
 
-    // Fetching anf Setting Authentication state
+    // Fetching and Setting Authentication state
     override fun isUserAuthenticated(): Boolean {
         return sharedPreferences.getBoolean(PREF_KEY_IS_AUTHENTICATED, false)
     }
@@ -32,9 +32,18 @@ class AppPreferenceHelper(private val sharedPreferences: SharedPreferences) : Pr
         sharedPreferences.edit().putBoolean(PREF_KEY_IS_AUTHENTICATED, authStatus).apply()
     }
 
+    // Fetching and Setting Transaction Record Number
+    override fun getRecordNumber(): Int {
+        return sharedPreferences.getInt(PREF_KEY_UNIQUE_RECORD_NUMBER, 1)
+    }
+    override fun setRecordNumber(updatedRecordNumber: Int) {
+        sharedPreferences.edit().putInt(PREF_KEY_UNIQUE_RECORD_NUMBER, updatedRecordNumber).apply()
+    }
+
     companion object {
         private const val PREF_KEY_MOBILE_NUMBER = "PREF_KEY_MOBILE_NUMBER"
         private const val PREF_KEY_ISO_CODE = "PREF_KEY_ISO_CODE"
         private const val PREF_KEY_IS_AUTHENTICATED = "PREF_KEY_IS_AUTHENTICATED"
+        private const val PREF_KEY_UNIQUE_RECORD_NUMBER = "PREF_KEY_UNIQUE_RECORD_NUMBER"
     }
 }

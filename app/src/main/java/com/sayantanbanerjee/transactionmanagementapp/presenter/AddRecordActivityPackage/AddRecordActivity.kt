@@ -50,8 +50,11 @@ class AddRecordActivity : AppCompatActivity() {
                 viewModel.saveRecord(phoneNumber, amount.toInt(), parity)
 
                 val minePhoneNumber = AppPreferenceHelper(sharedPreferences).getUserMobileNumber()
+                var recordNumber = AppPreferenceHelper(sharedPreferences).getRecordNumber()
+
                 var inputForQREncryption = ""
-                inputForQREncryption += "QRTRANSACTION;"
+                inputForQREncryption += "QRTRANSACTION"
+                inputForQREncryption += ";"
                 inputForQREncryption += minePhoneNumber
                 inputForQREncryption += ";"
                 inputForQREncryption += phoneNumber
@@ -60,12 +63,19 @@ class AddRecordActivity : AppCompatActivity() {
                 inputForQREncryption += ";"
                 inputForQREncryption += qrParity.toString()
                 inputForQREncryption += ";"
-                inputForQREncryption += "2"
-                inputForQREncryption += ";"
+                inputForQREncryption += recordNumber
+
+                recordNumber++
+                AppPreferenceHelper(sharedPreferences).setRecordNumber(recordNumber)
 
                 try {
                     val barcodeEncoder = BarcodeEncoder()
-                    val bitmap = barcodeEncoder.encodeBitmap(inputForQREncryption, BarcodeFormat.QR_CODE, 600, 600)
+                    val bitmap = barcodeEncoder.encodeBitmap(
+                        inputForQREncryption,
+                        BarcodeFormat.QR_CODE,
+                        600,
+                        600
+                    )
                     binding.qrCode.setImageBitmap(bitmap)
                     Toast.makeText(this, "QR Successfully generated", Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {

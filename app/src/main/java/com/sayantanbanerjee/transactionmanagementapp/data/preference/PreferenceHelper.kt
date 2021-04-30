@@ -15,4 +15,8 @@ interface PreferenceHelper {
     fun isUserAuthenticated(): Boolean
     fun setUserAuthenticated(authStatus: Boolean)
 
+    // unique record number
+    fun getRecordNumber(): Int
+    fun setRecordNumber(updatedRecordNumber: Int)
+
 }
