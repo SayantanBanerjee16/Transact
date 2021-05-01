@@ -22,4 +22,7 @@
     <string name="qr_code_place_holder">QR CODE PLACE HOLDER</string>
     <string name="activity_scanning">ACTIVITY SCANNING</string>
     <string name="scan_qr_code_for_verification">Scan QR Code For Verfication</string>
+    <string name="amount">AMOUNT</string>
+    <string name="accept_transaction">Accept Transaction</string>
+    <string name="reject_transaction">REJECT TRANSACTION</string>
 </resources>

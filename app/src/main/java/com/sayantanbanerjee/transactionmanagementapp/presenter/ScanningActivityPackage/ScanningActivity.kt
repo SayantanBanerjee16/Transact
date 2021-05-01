@@ -2,9 +2,11 @@
 
 package com.sayantanbanerjee.transactionmanagementapp.presenter.ScanningActivityPackage
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -19,6 +21,12 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ScanningActivity : AppCompatActivity() {
 
+    private var senderPhoneNumber = ""
+    private var myPhoneNumber = ""
+    private var amount = 0
+    private var parity = 0
+    private var transactionID = ""
+
     private lateinit var binding: ActivityScanningBinding
 
     @Inject
@@ -31,8 +39,12 @@ class ScanningActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_scanning)
         viewModel = ViewModelProvider(this, factory).get(ScanningViewModel::class.java)
+
+        resetViewsAndData()
 
         binding.scanQR.setOnClickListener {
             val integrator = IntentIntegrator(this)
@@ -43,12 +55,27 @@ class ScanningActivity : AppCompatActivity() {
             integrator.setBarcodeImageEnabled(true)
             integrator.initiateScan()
         }
+
+        binding.acceptButton.setOnClickListener {
+            var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
+            record++
+            AppPreferenceHelper(sharedPreferences).setRecordNumber(record)
+            viewModel.saveRecord(senderPhoneNumber, amount, parity, "ACCEPTED")
+        }
+
+        binding.rejectButton.setOnClickListener {
+            var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
+            record++
+            AppPreferenceHelper(sharedPreferences).setRecordNumber(record)
+            viewModel.saveRecord(senderPhoneNumber, amount, parity, "REJECTED")
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
             if (result.contents == null) {
+                resetViewsAndData()
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
             } else {
                 checkCode(result.contents)
@@ -62,27 +89,47 @@ class ScanningActivity : AppCompatActivity() {
         val contentsArray = contents.split(";").toTypedArray()
         val startCode = contentsArray[0]
         if (contentsArray.size != 6 && startCode != "QRTRANSACTION") {
+            resetViewsAndData()
             Toast.makeText(this, "Wrong QR Code Scanned", Toast.LENGTH_LONG).show()
         } else {
-            val senderPhoneNumber = contentsArray[1]
-            val myPhoneNumber = contentsArray[2]
-            val amount = contentsArray[3].toInt()
-            val parity = contentsArray[4].toInt()
-            val transactionID = contentsArray[5]
             val phoneNumberSavedInDevice =
                 AppPreferenceHelper(sharedPreferences).getUserMobileNumber()
             if (phoneNumberSavedInDevice == myPhoneNumber) {
-                Toast.makeText(
-                    this,
-                    senderPhoneNumber + "\n" + myPhoneNumber + "\n" + amount.toString()
-                            + "\n" + parity.toString() + "\n" + transactionID,
-                    Toast.LENGTH_LONG
-                ).show()
+                setViewAndData(contentsArray)
             } else {
+                resetViewsAndData()
                 Toast.makeText(this, "Transaction isn't meant for you!", Toast.LENGTH_LONG).show()
             }
 
         }
 
+    }
+
+    private fun resetViewsAndData() {
+        senderPhoneNumber = ""
+        myPhoneNumber = ""
+        amount = 0
+        parity = 0
+        transactionID = ""
+        binding.detailsView.visibility = View.GONE
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setViewAndData(contentsArray: Array<String>) {
+
+        senderPhoneNumber = contentsArray[1]
+        myPhoneNumber = contentsArray[2]
+        amount = contentsArray[3].toInt()
+        parity = contentsArray[4].toInt()
+        transactionID = contentsArray[5]
+
+        binding.detailsView.visibility = View.VISIBLE
+        binding.senderContactNumber.text = senderPhoneNumber
+        binding.amountInvolved.text = amount.toString()
+        if (parity == 1) {
+            binding.parity.text = "AMOUNT SENT BY YOU"
+        } else {
+            binding.parity.text = "AMOUNT RECEIVED TO YOU"
+        }
     }
 }
