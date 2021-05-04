@@ -43,4 +43,10 @@ class UseCaseModule {
         return GetAllRecordsUseCase(appRepository)
     }
 
+    @Singleton
+    @Provides
+    fun providesSaveStateToFirebaseUseCase(appRepository: AppRepository): SaveStateToFirebaseUseCase {
+        return SaveStateToFirebaseUseCase(appRepository)
+    }
+
 }

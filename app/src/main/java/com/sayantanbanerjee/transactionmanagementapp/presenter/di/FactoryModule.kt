@@ -47,10 +47,12 @@ class FactoryModule {
     @Singleton
     @Provides
     fun providesScanningViewModelFactory(
-        saveRecordUseCase: SaveRecordUseCase
+        saveRecordUseCase: SaveRecordUseCase,
+        saveStateToFirebaseUseCase: SaveStateToFirebaseUseCase
     ): ScanningViewModelFactory {
         return ScanningViewModelFactory(
-            saveRecordUseCase
+            saveRecordUseCase,
+            saveStateToFirebaseUseCase
         )
     }
 }

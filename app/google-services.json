@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "63252570638",
+    "firebase_url": "https://transaction-management-app-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "transaction-management-app",
     "storage_bucket": "transaction-management-app.appspot.com"
   },

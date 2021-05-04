@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sayantanbanerjee.transactionmanagementapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <application

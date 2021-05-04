@@ -2,6 +2,7 @@ package com.sayantanbanerjee.transactionmanagementapp.presenter.di
 
 import com.sayantanbanerjee.transactionmanagementapp.data.repository.AppRepositoryImpl
 import com.sayantanbanerjee.transactionmanagementapp.data.repository.DataSource.RecordLocalDataSource
+import com.sayantanbanerjee.transactionmanagementapp.data.repository.DataSource.RemoteDataSource
 import com.sayantanbanerjee.transactionmanagementapp.domain.repository.AppRepository
 import dagger.Module
 import dagger.Provides
@@ -17,8 +18,11 @@ class AppRepositoryModule {
 
     @Singleton
     @Provides
-    fun providesAppRepository(recordLocalDataSource: RecordLocalDataSource): AppRepository {
-        return AppRepositoryImpl(recordLocalDataSource)
+    fun providesAppRepository(
+        recordLocalDataSource: RecordLocalDataSource,
+        remoteDataSource: RemoteDataSource
+    ): AppRepository {
+        return AppRepositoryImpl(recordLocalDataSource, remoteDataSource)
     }
 
 }

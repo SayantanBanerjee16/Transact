@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.zxing.integration.android.IntentIntegrator
 import com.sayantanbanerjee.transactionmanagementapp.R
+import com.sayantanbanerjee.transactionmanagementapp.data.model.State
 import com.sayantanbanerjee.transactionmanagementapp.data.preference.AppPreferenceHelper
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivityScanningBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,6 +61,8 @@ class ScanningActivity : AppCompatActivity() {
             var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
             record++
             AppPreferenceHelper(sharedPreferences).setRecordNumber(record)
+            val curState = State(transactionID, senderPhoneNumber, "ACCEPTED")
+            viewModel.saveStateToFirebase(curState)
             viewModel.saveRecord(senderPhoneNumber, amount, parity, "ACCEPTED")
         }
 
@@ -67,6 +70,8 @@ class ScanningActivity : AppCompatActivity() {
             var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
             record++
             AppPreferenceHelper(sharedPreferences).setRecordNumber(record)
+            val curState = State(transactionID, senderPhoneNumber, "REJECTED")
+            viewModel.saveStateToFirebase(curState)
             viewModel.saveRecord(senderPhoneNumber, amount, parity, "REJECTED")
         }
     }
