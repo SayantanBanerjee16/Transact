@@ -13,4 +13,5 @@ interface AppRepository {
     fun fetchSumReceivedFromDB(): Flow<Int>
     fun getAllRecords(): Flow<List<Record>>
     fun saveStateToFirebase(state: State)
+    fun getStateFromFirebase()
 }

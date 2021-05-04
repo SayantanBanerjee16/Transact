@@ -35,4 +35,8 @@ class AppRepositoryImpl(
     override fun saveStateToFirebase(state: State) {
         remoteDataSource.saveStateToFirebase(state)
     }
+
+    override fun getStateFromFirebase() {
+        remoteDataSource.fetchStateFromFirebase()
+    }
 }

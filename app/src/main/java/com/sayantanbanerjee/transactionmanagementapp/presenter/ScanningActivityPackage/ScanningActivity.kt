@@ -99,7 +99,7 @@ class ScanningActivity : AppCompatActivity() {
         } else {
             val phoneNumberSavedInDevice =
                 AppPreferenceHelper(sharedPreferences).getUserMobileNumber()
-            if (phoneNumberSavedInDevice == myPhoneNumber) {
+            if (phoneNumberSavedInDevice == contentsArray[2]) {
                 setViewAndData(contentsArray)
             } else {
                 resetViewsAndData()

@@ -22,13 +22,15 @@ class FactoryModule {
         saveRecordUseCase: SaveRecordUseCase,
         getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
         getSumReceivedUseCase: GetSumReceivedUseCase,
-        getAllRecordsUseCase: GetAllRecordsUseCase
+        getAllRecordsUseCase: GetAllRecordsUseCase,
+        getStateFromFirebaseUseCase: GetStateFromFirebaseUseCase
     ): TransactionViewModelFactory {
         return TransactionViewModelFactory(
             saveRecordUseCase,
             getAcceptedSumSentUseCase,
             getSumReceivedUseCase,
-            getAllRecordsUseCase
+            getAllRecordsUseCase,
+            getStateFromFirebaseUseCase
         )
     }
 

@@ -25,4 +25,5 @@
     <string name="amount">AMOUNT</string>
     <string name="accept_transaction">Accept Transaction</string>
     <string name="reject_transaction">REJECT TRANSACTION</string>
+    <string name="update_items">UpdateItems</string>
 </resources>

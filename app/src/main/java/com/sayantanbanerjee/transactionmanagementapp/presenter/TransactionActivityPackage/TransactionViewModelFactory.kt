@@ -8,14 +8,16 @@ class TransactionViewModelFactory(
     private val saveRecordUseCase: SaveRecordUseCase,
     private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
     private val getSumReceivedUseCase: GetSumReceivedUseCase,
-    private val getAllRecordsUseCase: GetAllRecordsUseCase
+    private val getAllRecordsUseCase: GetAllRecordsUseCase,
+    private val getStateFromFirebaseUseCase: GetStateFromFirebaseUseCase
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return TransactionViewModel(
             saveRecordUseCase,
             getAcceptedSumSentUseCase,
             getSumReceivedUseCase,
-            getAllRecordsUseCase
+            getAllRecordsUseCase,
+            getStateFromFirebaseUseCase
         ) as T
     }
 }

@@ -50,6 +50,10 @@ class TransactionActivity : AppCompatActivity() {
             transactionAdapter.differ.submitList(it)
         })
 
+        binding.updateFloatingActionButton.setOnClickListener {
+            viewModel.getStateFromFirebase()
+        }
+
     }
 
     private fun initRecyclerView() {
