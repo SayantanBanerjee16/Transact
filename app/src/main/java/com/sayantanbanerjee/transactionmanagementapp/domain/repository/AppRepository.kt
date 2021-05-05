@@ -11,6 +11,7 @@ interface AppRepository {
     fun fetchAcceptedSentAmountFromDB(): Flow<Int>
     fun fetchSumReceivedFromDB(): Flow<Int>
     fun getAllRecords(): Flow<List<Record>>
+    fun getAllRecordsOfAParticularContact(phoneNumber : String): Flow<List<Record>>
     fun saveStateToFirebase(state: State)
     fun getStateFromFirebase()
 }

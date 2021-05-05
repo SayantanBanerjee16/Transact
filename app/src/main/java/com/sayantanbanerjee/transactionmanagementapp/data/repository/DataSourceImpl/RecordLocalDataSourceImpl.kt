@@ -34,4 +34,8 @@ class RecordLocalDataSourceImpl(
     override fun getAllRecords(): Flow<List<Record>> {
         return recordDAO.getAllRecords()
     }
+
+    override fun getAllRecordsOfAParticularContact(phoneNumber: String): Flow<List<Record>> {
+        return recordDAO.getAllRecordsOfParticularContact(phoneNumber)
+    }
 }

@@ -11,4 +11,5 @@ interface RecordLocalDataSource {
     fun fetchAcceptedSentAmountFromDB() : Flow<Int>
     fun getSumReceivedFromDB() : Flow<Int>
     fun getAllRecords() : Flow<List<Record>>
+    fun getAllRecordsOfAParticularContact(phoneNumber : String) : Flow<List<Record>>
 }

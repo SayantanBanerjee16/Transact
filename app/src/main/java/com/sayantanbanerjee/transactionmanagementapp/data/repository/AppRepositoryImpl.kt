@@ -28,6 +28,10 @@ class AppRepositoryImpl(
         return recordLocalDataSource.getAllRecords()
     }
 
+    override fun getAllRecordsOfAParticularContact(phoneNumber: String): Flow<List<Record>> {
+        return recordLocalDataSource.getAllRecordsOfAParticularContact(phoneNumber)
+    }
+
     override fun saveStateToFirebase(state: State) {
         remoteDataSource.saveStateToFirebase(state)
     }

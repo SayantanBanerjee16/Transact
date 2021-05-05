@@ -30,4 +30,7 @@ interface RecordDAO {
 
     @Query("SELECT * FROM records ORDER BY record_timestamp DESC")
     fun getAllRecords(): Flow<List<Record>>
+
+    @Query("SELECT * FROM records WHERE record_receiver_contact_number = :tPhoneNumber ORDER BY record_timestamp DESC")
+    fun getAllRecordsOfParticularContact(tPhoneNumber : String): Flow<List<Record>>
 }

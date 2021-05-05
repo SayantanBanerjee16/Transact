@@ -49,4 +49,10 @@ class UseCaseModule {
         return GetStateFromFirebaseUseCase(appRepository)
     }
 
+    @Singleton
+    @Provides
+    fun providesGetAllRecordsOfAParticularContactUseCase(appRepository: AppRepository): GetAllRecordsOfAParticularContactUseCase {
+        return GetAllRecordsOfAParticularContactUseCase(appRepository)
+    }
+
 }
