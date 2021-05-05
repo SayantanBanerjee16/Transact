@@ -36,4 +36,7 @@ interface RecordDAO {
 
     @Query("SELECT COALESCE(sum(COALESCE(record_amount_involved,0)), 0) FROM records WHERE record_receiver_contact_number = :tPhoneNumber AND record_parity = 1 AND record_status = 'ACCEPTED' ")
     fun getAcceptedSumSentOfAParticularContact(tPhoneNumber : String): Flow<Int>
+
+    @Query("SELECT COALESCE(sum(COALESCE(record_amount_involved,0)), 0) FROM records WHERE record_receiver_contact_number = :tPhoneNumber AND record_parity = 0 AND record_status = 'ACCEPTED' ")
+    fun getSumReceivedOfAParticularContact(tPhoneNumber : String): Flow<Int>
 }

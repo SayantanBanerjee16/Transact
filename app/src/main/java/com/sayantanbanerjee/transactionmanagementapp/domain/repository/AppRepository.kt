@@ -10,6 +10,7 @@ interface AppRepository {
     suspend fun saveRecord(record: Record)
     fun fetchAcceptedSentAmountFromDB(): Flow<Int>
     fun fetchAcceptedSentAmountFromDBByAParticularContact(phoneNumber: String): Flow<Int>
+    fun fetchAcceptedReceivedAmountFromDBByAParticularContact(phoneNumber: String): Flow<Int>
     fun fetchSumReceivedFromDB(): Flow<Int>
     fun getAllRecords(): Flow<List<Record>>
     fun getAllRecordsOfAParticularContact(phoneNumber: String): Flow<List<Record>>

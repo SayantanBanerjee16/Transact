@@ -24,6 +24,10 @@ class AppRepositoryImpl(
         return recordLocalDataSource.fetchAcceptedSentAmountOfAParticularContact(phoneNumber)
     }
 
+    override fun fetchAcceptedReceivedAmountFromDBByAParticularContact(phoneNumber: String): Flow<Int> {
+        return recordLocalDataSource.getSumReceivedOfAParticularContact(phoneNumber)
+    }
+
     override fun fetchSumReceivedFromDB(): Flow<Int> {
         return recordLocalDataSource.getSumReceivedFromDB()
     }
