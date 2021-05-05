@@ -27,6 +27,12 @@ class UseCaseModule {
 
     @Singleton
     @Provides
+    fun providesAcceptedSumSentByAParticularContactUseCase(appRepository: AppRepository): GetAcceptedSumSentByAParticularContactUseCase {
+        return GetAcceptedSumSentByAParticularContactUseCase(appRepository)
+    }
+
+    @Singleton
+    @Provides
     fun providesSumReceivedUseCase(appRepository: AppRepository): GetSumReceivedUseCase {
         return GetSumReceivedUseCase(appRepository)
     }

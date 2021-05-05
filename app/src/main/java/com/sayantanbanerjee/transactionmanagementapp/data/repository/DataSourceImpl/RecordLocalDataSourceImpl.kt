@@ -38,4 +38,8 @@ class RecordLocalDataSourceImpl(
     override fun getAllRecordsOfAParticularContact(phoneNumber: String): Flow<List<Record>> {
         return recordDAO.getAllRecordsOfParticularContact(phoneNumber)
     }
+
+    override fun fetchAcceptedSentAmountOfAParticularContact(phoneNumber: String): Flow<Int> {
+        return recordDAO.getAcceptedSumSentOfAParticularContact(phoneNumber)
+    }
 }
