@@ -16,10 +16,6 @@ class AppRepositoryImpl(
         recordLocalDataSource.saveRecordToDB(record)
     }
 
-    override suspend fun updateRecordStatus(status: String, id: Int) {
-        recordLocalDataSource.updateRecordStatusToDB(status, id)
-    }
-
     override fun fetchAcceptedSentAmountFromDB(): Flow<Int> {
         return recordLocalDataSource.fetchAcceptedSentAmountFromDB()
     }

@@ -21,12 +21,6 @@ class UseCaseModule {
 
     @Singleton
     @Provides
-    fun providesUpdateRecordStatusUseCase(appRepository: AppRepository): UpdateRecordStatusUseCase {
-        return UpdateRecordStatusUseCase(appRepository)
-    }
-
-    @Singleton
-    @Provides
     fun providesAcceptedSumSentUseCase(appRepository: AppRepository): GetAcceptedSumSentUseCase {
         return GetAcceptedSumSentUseCase(appRepository)
     }
