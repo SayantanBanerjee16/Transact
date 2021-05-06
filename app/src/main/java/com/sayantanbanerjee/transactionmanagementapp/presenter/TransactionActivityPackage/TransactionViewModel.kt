@@ -1,35 +1,19 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage
 
 import androidx.lifecycle.*
-import com.sayantanbanerjee.transactionmanagementapp.data.model.Record
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class TransactionViewModel(
-    private val saveRecordUseCase: SaveRecordUseCase,
     private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
     private val getSumReceivedUseCase: GetSumReceivedUseCase,
     private val getAllRecordsUseCase: GetAllRecordsUseCase,
-    private val getStateFromFirebaseUseCase: GetStateFromFirebaseUseCase
+    private val getStateFromFirebaseUseCase: GetStateFromFirebaseUseCase,
+    private val getAcceptedSumReceivedByAParticularContactUseCase: GetAcceptedSumReceivedByAParticularContactUseCase,
+    private val getAcceptedSumSentByAParticularContactUseCase: GetAcceptedSumSentByAParticularContactUseCase,
+    private val getAllRecordsOfAParticularContactUseCase: GetAllRecordsOfAParticularContactUseCase
+
 ) : ViewModel() {
-
-    var acceptSumSent: MutableLiveData<Int> = MutableLiveData()
-
-    // save data to local database
-    fun saveRecord() = viewModelScope.launch {
-        val currentTimestamp = System.currentTimeMillis()
-        val record = Record(
-            0,
-            "+919434792685",
-            20,
-            0, currentTimestamp.toString(),
-            "ACCEPTED"
-        )
-        saveRecordUseCase.execute(record)
-    }
 
     fun getSumSentAcceptedValue() = liveData {
         getAcceptedSumSentUseCase.execute().collect {
@@ -52,4 +36,24 @@ class TransactionViewModel(
     fun getStateFromFirebase() {
         getStateFromFirebaseUseCase.execute()
     }
+
+    fun getAllTransactionsRecordOfAParticularContact(phoneNumber: String) = liveData {
+        getAllRecordsOfAParticularContactUseCase.execute(phoneNumber).collect {
+            emit(it)
+        }
+    }
+    
+    fun getAcceptedSumSentOfAParticularContact(phoneNumber: String) = liveData {
+        getAcceptedSumSentByAParticularContactUseCase.execute(phoneNumber).collect {
+            emit(it)
+        }
+    }
+
+    fun getAcceptedSumReceivedOfAParticularContact(phoneNumber: String) = liveData {
+        getAcceptedSumReceivedByAParticularContactUseCase.execute(phoneNumber).collect {
+            emit(it)
+        }
+    }
+
+
 }

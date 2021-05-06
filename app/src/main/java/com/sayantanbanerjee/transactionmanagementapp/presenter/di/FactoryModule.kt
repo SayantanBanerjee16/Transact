@@ -19,18 +19,23 @@ class FactoryModule {
     @Singleton
     @Provides
     fun providesTransactionViewModelFactory(
-        saveRecordUseCase: SaveRecordUseCase,
         getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
         getSumReceivedUseCase: GetSumReceivedUseCase,
         getAllRecordsUseCase: GetAllRecordsUseCase,
-        getStateFromFirebaseUseCase: GetStateFromFirebaseUseCase
+        getStateFromFirebaseUseCase: GetStateFromFirebaseUseCase,
+        getAcceptedSumReceivedByAParticularContactUseCase: GetAcceptedSumReceivedByAParticularContactUseCase,
+        getAcceptedSumSentByAParticularContactUseCase: GetAcceptedSumSentByAParticularContactUseCase,
+        getAllRecordsOfAParticularContactUseCase: GetAllRecordsOfAParticularContactUseCase
+
     ): TransactionViewModelFactory {
         return TransactionViewModelFactory(
-            saveRecordUseCase,
             getAcceptedSumSentUseCase,
             getSumReceivedUseCase,
             getAllRecordsUseCase,
-            getStateFromFirebaseUseCase
+            getStateFromFirebaseUseCase,
+            getAcceptedSumReceivedByAParticularContactUseCase,
+            getAcceptedSumSentByAParticularContactUseCase,
+            getAllRecordsOfAParticularContactUseCase
         )
     }
 

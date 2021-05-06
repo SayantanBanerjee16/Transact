@@ -5,19 +5,23 @@ import androidx.lifecycle.ViewModelProvider
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
 
 class TransactionViewModelFactory(
-    private val saveRecordUseCase: SaveRecordUseCase,
     private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
     private val getSumReceivedUseCase: GetSumReceivedUseCase,
     private val getAllRecordsUseCase: GetAllRecordsUseCase,
-    private val getStateFromFirebaseUseCase: GetStateFromFirebaseUseCase
+    private val getStateFromFirebaseUseCase: GetStateFromFirebaseUseCase,
+    private val getAcceptedSumReceivedByAParticularContactUseCase: GetAcceptedSumReceivedByAParticularContactUseCase,
+    private val getAcceptedSumSentByAParticularContactUseCase: GetAcceptedSumSentByAParticularContactUseCase,
+    private val getAllRecordsOfAParticularContactUseCase: GetAllRecordsOfAParticularContactUseCase
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return TransactionViewModel(
-            saveRecordUseCase,
             getAcceptedSumSentUseCase,
             getSumReceivedUseCase,
             getAllRecordsUseCase,
-            getStateFromFirebaseUseCase
+            getStateFromFirebaseUseCase,
+            getAcceptedSumReceivedByAParticularContactUseCase,
+            getAcceptedSumSentByAParticularContactUseCase,
+            getAllRecordsOfAParticularContactUseCase
         ) as T
     }
 }

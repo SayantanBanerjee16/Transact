@@ -33,8 +33,8 @@ class UseCaseModule {
 
     @Singleton
     @Provides
-    fun providesAcceptedSumReceivedByAParticularContactUseCase(appRepository: AppRepository): GetAcceptedSumReceivedByAParticularContact {
-        return GetAcceptedSumReceivedByAParticularContact(appRepository)
+    fun providesAcceptedSumReceivedByAParticularContactUseCase(appRepository: AppRepository): GetAcceptedSumReceivedByAParticularContactUseCase {
+        return GetAcceptedSumReceivedByAParticularContactUseCase(appRepository)
     }
 
     @Singleton
