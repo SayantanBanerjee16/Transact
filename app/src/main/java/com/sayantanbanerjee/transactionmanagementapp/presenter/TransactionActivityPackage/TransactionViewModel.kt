@@ -42,7 +42,7 @@ class TransactionViewModel(
             emit(it)
         }
     }
-    
+
     fun getAcceptedSumSentOfAParticularContact(phoneNumber: String) = liveData {
         getAcceptedSumSentByAParticularContactUseCase.execute(phoneNumber).collect {
             emit(it)
