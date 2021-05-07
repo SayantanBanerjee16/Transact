@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sayantanbanerjee.transactionmanagementapp.R
 import android.os.Bundle
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sayantanbanerjee.transactionmanagementapp.NetworkConnectivity
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivityTransactionBinding
 import com.sayantanbanerjee.transactionmanagementapp.presenter.AddRecordActivityPackage.AddRecordActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,7 +44,15 @@ class TransactionActivity : AppCompatActivity() {
         }
 
         binding.updateFloatingActionButton.setOnClickListener {
-            viewModel.getStateFromFirebase()
+            if(NetworkConnectivity.isNetworkAvailable(this)){
+                viewModel.getStateFromFirebase()
+                Toast.makeText(this, "Transactions are updated!", Toast.LENGTH_LONG)
+                    .show()
+            }else{
+                Toast.makeText(this, "Network connectivity isn\'t available.", Toast.LENGTH_LONG)
+                    .show()
+            }
+
         }
 
     }

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.zxing.integration.android.IntentIntegrator
+import com.sayantanbanerjee.transactionmanagementapp.NetworkConnectivity
 import com.sayantanbanerjee.transactionmanagementapp.R
 import com.sayantanbanerjee.transactionmanagementapp.data.model.State
 import com.sayantanbanerjee.transactionmanagementapp.data.preference.AppPreferenceHelper
@@ -58,21 +59,36 @@ class ScanningActivity : AppCompatActivity() {
         }
 
         binding.acceptButton.setOnClickListener {
-            var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
-            record++
-            AppPreferenceHelper(sharedPreferences).setRecordNumber(record)
-            val curState = State(transactionID, senderPhoneNumber, "ACCEPTED")
-            viewModel.saveStateToFirebase(curState)
-            viewModel.saveRecord(senderPhoneNumber, amount, parity, "ACCEPTED")
+            if (NetworkConnectivity.isNetworkAvailable(this)) {
+                var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
+                record++
+                AppPreferenceHelper(sharedPreferences).setRecordNumber(record)
+                val curState = State(transactionID, senderPhoneNumber, "ACCEPTED")
+                viewModel.saveStateToFirebase(curState)
+                viewModel.saveRecord(senderPhoneNumber, amount, parity, "ACCEPTED")
+                Toast.makeText(this, "Transaction Recorded", Toast.LENGTH_LONG).show()
+                super.onBackPressed()
+            } else {
+                Toast.makeText(this, "Network connectivity isn\'t available", Toast.LENGTH_LONG)
+                    .show()
+            }
+
         }
 
         binding.rejectButton.setOnClickListener {
-            var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
-            record++
-            AppPreferenceHelper(sharedPreferences).setRecordNumber(record)
-            val curState = State(transactionID, senderPhoneNumber, "REJECTED")
-            viewModel.saveStateToFirebase(curState)
-            viewModel.saveRecord(senderPhoneNumber, amount, parity, "REJECTED")
+            if (NetworkConnectivity.isNetworkAvailable(this)) {
+                var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
+                record++
+                AppPreferenceHelper(sharedPreferences).setRecordNumber(record)
+                val curState = State(transactionID, senderPhoneNumber, "REJECTED")
+                viewModel.saveStateToFirebase(curState)
+                viewModel.saveRecord(senderPhoneNumber, amount, parity, "REJECTED")
+                Toast.makeText(this, "Transaction Recorded", Toast.LENGTH_LONG).show()
+                super.onBackPressed()
+            } else {
+                Toast.makeText(this, "Network connectivity isn\'t available", Toast.LENGTH_LONG)
+                    .show()
+            }
         }
     }
 
