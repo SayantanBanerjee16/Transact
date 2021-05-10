@@ -68,9 +68,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/qr_code_place_holder"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/saveButton" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/transactionSuccessful"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scanning_successful"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/qrCode" />
+
+        <Button
+            android:id="@+id/transactionRevoked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/revoke_transaction"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/transactionSuccessful" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

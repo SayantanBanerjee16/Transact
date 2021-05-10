@@ -26,4 +26,6 @@
     <string name="accept_transaction">Accept Transaction</string>
     <string name="reject_transaction">REJECT TRANSACTION</string>
     <string name="update_items">UpdateItems</string>
+    <string name="scanning_successful">Transaction Scanning done?</string>
+    <string name="revoke_transaction">Revoke The Transaction</string>
 </resources>

@@ -3,6 +3,7 @@ package com.sayantanbanerjee.transactionmanagementapp.presenter.AddRecordActivit
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -47,10 +48,10 @@ class AddRecordActivity : AppCompatActivity() {
                 Toast.makeText(this, "Fields cannot be left empty!", Toast.LENGTH_SHORT).show()
             } else {
 
-                viewModel.saveRecord(phoneNumber, amount.toInt(), parity)
+                afterScanningViewsSetup()
 
                 val minePhoneNumber = AppPreferenceHelper(sharedPreferences).getUserMobileNumber()
-                var recordNumber = AppPreferenceHelper(sharedPreferences).getRecordNumber()
+                val recordNumber = AppPreferenceHelper(sharedPreferences).getRecordNumber()
 
                 var inputForQREncryption = ""
                 inputForQREncryption += "QRTRANSACTION"
@@ -65,8 +66,7 @@ class AddRecordActivity : AppCompatActivity() {
                 inputForQREncryption += ";"
                 inputForQREncryption += recordNumber
 
-                recordNumber++
-                AppPreferenceHelper(sharedPreferences).setRecordNumber(recordNumber)
+
 
                 try {
                     val barcodeEncoder = BarcodeEncoder()
@@ -84,9 +84,43 @@ class AddRecordActivity : AppCompatActivity() {
                         "Something went wrong in generating QR Code!",
                         Toast.LENGTH_LONG
                     ).show()
+                    super.onBackPressed()
                 }
 
             }
         }
+
+        binding.transactionSuccessful.setOnClickListener {
+            val phoneNumber = binding.phoneNumber.text.toString()
+            val amount = binding.amountInvolved.text.toString()
+            var parity = 1
+            if (binding.parityGroup.checkedRadioButtonId == R.id.amountReceivedButton) {
+                parity = 0
+            }
+            var recordNumber = AppPreferenceHelper(sharedPreferences).getRecordNumber()
+            viewModel.saveRecord(phoneNumber, amount.toInt(), parity)
+            recordNumber++
+            AppPreferenceHelper(sharedPreferences).setRecordNumber(recordNumber)
+            Toast.makeText(this, "Transaction Saved!", Toast.LENGTH_LONG).show()
+            super.onBackPressed()
+        }
+
+        binding.transactionRevoked.setOnClickListener {
+            Toast.makeText(this, "Transaction Revoked!", Toast.LENGTH_LONG).show()
+            super.onBackPressed()
+        }
     }
+
+    private fun afterScanningViewsSetup() {
+        binding.apply {
+            phoneNumber.visibility = View.INVISIBLE
+            amountInvolved.visibility = View.INVISIBLE
+            parityGroup.visibility = View.INVISIBLE
+            saveButton.visibility = View.GONE
+            transactionRevoked.visibility = View.VISIBLE
+            transactionSuccessful.visibility = View.VISIBLE
+            qrCode.visibility = View.VISIBLE
+        }
+    }
+
 }
