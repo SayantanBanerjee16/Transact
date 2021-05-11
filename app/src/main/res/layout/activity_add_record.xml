@@ -7,34 +7,66 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="32dp"
+        android:background="@drawable/backthree"
         tools:context=".presenter.AddRecordActivityPackage.AddRecordActivity">
 
-        <EditText
-            android:id="@+id/phoneNumber"
+        <TextView
+            android:id="@+id/addNewRecordHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="60dp"
-            android:hint="@string/enter_phone_number"
-            android:importantForAutofill="no"
-            android:inputType="textPhonetic"
+            android:fontFamily="@font/nova_mono"
+            android:text="@string/add_new_record"
+            android:textColor="@color/deepBlue"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/phoneNumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextFields" />
+            app:layout_constraintVertical_bias="0.227" />
 
-        <EditText
-            android:id="@+id/amountInvolved"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneNumber"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/enter_amount_involved"
-            android:importantForAutofill="no"
-            android:inputType="number"
+            android:hint="@string/enter_phone_number"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/phoneNumber" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.348"
+            app:startIconDrawable="@drawable/fui_ic_phone_white_24dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPhonetic" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/amountInvolved"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/enter_amount_involved"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneNumber"
+            app:startIconDrawable="@drawable/ic_baseline_account_balance_wallet_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <RadioGroup
             android:id="@+id/parityGroup"
@@ -75,6 +107,7 @@
             app:start_color="@color/gradientStart"
             app:stroke="3dp" />
 
+
         <ImageView
             android:id="@+id/qrCode"
             android:layout_width="wrap_content"
@@ -83,9 +116,10 @@
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.37" />
 
         <com.bartbergmans.gradientbutton.views.GradientButton
             android:id="@+id/transactionSuccessful"

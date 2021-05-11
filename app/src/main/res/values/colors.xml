@@ -8,4 +8,5 @@
     <color name="gradientStart">#5C258D</color>
     <color name="gradientEnd">#4389A2</color>
     <color name="fillColor">#9EE6FF</color>
+    <color name="deepBlue">#031983</color>
 </resources>

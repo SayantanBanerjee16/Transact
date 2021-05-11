@@ -35,12 +35,10 @@ class AddRecordActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory).get(AddRecordViewModel::class.java)
 
         binding.saveButton.setOnClickListener {
-            val phoneNumber = binding.phoneNumber.text.toString()
-            val amount = binding.amountInvolved.text.toString()
-            var parity = 1
+            val phoneNumber = binding.phoneNumber.editText?.text.toString()
+            val amount = binding.amountInvolved.editText?.text.toString()
             var qrParity: Int = 0
             if (binding.parityGroup.checkedRadioButtonId == R.id.amountReceivedButton) {
-                parity = 0
                 qrParity = 1
             }
 
@@ -91,8 +89,8 @@ class AddRecordActivity : AppCompatActivity() {
         }
 
         binding.transactionSuccessful.setOnClickListener {
-            val phoneNumber = binding.phoneNumber.text.toString()
-            val amount = binding.amountInvolved.text.toString()
+            val phoneNumber = binding.phoneNumber.editText?.text.toString()
+            val amount = binding.amountInvolved.editText?.text.toString()
             var parity = 1
             if (binding.parityGroup.checkedRadioButtonId == R.id.amountReceivedButton) {
                 parity = 0

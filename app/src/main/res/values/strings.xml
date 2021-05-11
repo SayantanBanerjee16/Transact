@@ -14,18 +14,19 @@
     <string name="parity">PARITY</string>
     <string name="status">STATUS</string>
     <string name="add_items">add_items</string>
-    <string name="enter_phone_number">ENTER PHONE NUMBER</string>
-    <string name="enter_amount_involved">AMOUNT INVOLVED</string>
+    <string name="enter_phone_number">RECEIVER PHONE NUMBER</string>
+    <string name="enter_amount_involved">AMOUNT INVOLVED (in Rs.)</string>
     <string name="amount_received">Amount Received</string>
     <string name="amount_sent">Amount Sent</string>
     <string name="generate_qr_code">GENERATE QR CODE</string>
     <string name="qr_code_place_holder">QR CODE PLACE HOLDER</string>
     <string name="activity_scanning">ACTIVITY SCANNING</string>
-    <string name="scan_qr_code_for_verification">Scan QR Code For Verfication</string>
+    <string name="scan_qr_code_for_verification">Scan QR Code For Verification</string>
     <string name="amount">AMOUNT</string>
     <string name="accept_transaction">Accept Transaction</string>
     <string name="reject_transaction">REJECT TRANSACTION</string>
     <string name="update_items">UpdateItems</string>
     <string name="scanning_successful">Transaction Scanning done?</string>
     <string name="revoke_transaction">Revoke The Transaction</string>
+    <string name="add_new_record">ADD NEW RECORD</string>
 </resources>
