@@ -38,11 +38,6 @@ class TransactionActivity : AppCompatActivity() {
         viewDefaultList()
         setSearchView()
 
-        binding.floatingActionButton.setOnClickListener {
-            val intent = Intent(this@TransactionActivity, AddRecordActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.updateFloatingActionButton.setOnClickListener {
             if(NetworkConnectivity.isNetworkAvailable(this)){
                 viewModel.getStateFromFirebase()

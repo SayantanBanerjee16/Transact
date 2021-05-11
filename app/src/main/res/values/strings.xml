@@ -1,9 +1,9 @@
 <resources>
     <string name="app_package_name">com.sayantanbanerjee.transactionmanagementapp</string>
-    <string name="app_name">transactionmanagementapp</string>
+    <string name="app_name">Transact</string>
     <string name="splash_image">splash_image</string>
     <string name="ANONYMOUS">ANONYMOUS</string>
-    <string name="activity_transaction">activity_transaction</string>
+    <string name="activity_transaction">To View The Transactions</string>
     <string name="add_transaction_to_database">Add transaction</string>
     <string name="update_as_accept">Update Accept</string>
     <string name="update_as_reject">Update Reject</string>
@@ -20,7 +20,7 @@
     <string name="amount_sent">Amount Sent</string>
     <string name="generate_qr_code">GENERATE QR CODE</string>
     <string name="qr_code_place_holder">QR CODE PLACE HOLDER</string>
-    <string name="activity_scanning">ACTIVITY SCANNING</string>
+    <string name="activity_scanning">TO VERIFY TRANSACTION</string>
     <string name="scan_qr_code_for_verification">Scan QR Code!</string>
     <string name="amount">AMOUNT</string>
     <string name="accept_transaction">Accept Transaction</string>
@@ -31,4 +31,6 @@
     <string name="add_new_record">ADD NEW RECORD</string>
     <string name="scan_record">VERIFICATION OF RECORDS</string>
     <string name="sender_number">Sender Number</string>
+    <string name="transact">TRANSACT</string>
+    <string name="activity_adding_transaction">TO ADD TRANSACTION</string>
 </resources>

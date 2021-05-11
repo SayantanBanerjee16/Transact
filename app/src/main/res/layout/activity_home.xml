@@ -6,26 +6,81 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background"
         tools:context=".presenter.HomeActivity">
 
-        <Button
-            android:id="@+id/routeToTransactionActivity"
+        <TextView
+            android:id="@+id/addNewRecordHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_transaction"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:fontFamily="@font/nova_mono"
+            android:text="@string/transact"
+            android:textColor="@color/deepBlue"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/routeToTransactionActivity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+
+        <com.bartbergmans.gradientbutton.views.GradientButton
+            android:id="@+id/routeToTransactionActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="20dp"
+            android:clickable="true"
+            android:padding="16dp"
+            android:text="@string/activity_transaction"
+            app:end_color="@color/gradientEnd"
+            app:fill_color="@color/fillColor"
+            app:filled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.556"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.609"
+            app:orientation="top_bottom"
+            app:start_color="@color/gradientStart"
+            app:stroke="3dp" />
+
+        <com.bartbergmans.gradientbutton.views.GradientButton
+            android:id="@+id/routeToAddRecordActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:clickable="true"
+            android:padding="16dp"
+            android:text="@string/activity_adding_transaction"
+            app:end_color="@color/gradientEnd"
+            app:fill_color="@color/fillColor"
+            app:filled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/routeToTransactionActivity"
+            app:orientation="top_bottom"
+            app:start_color="@color/gradientStart"
+            app:stroke="3dp" />
+
+        <com.bartbergmans.gradientbutton.views.GradientButton
             android:id="@+id/routeToScanningActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:clickable="true"
+            android:padding="16dp"
             android:text="@string/activity_scanning"
+            app:end_color="@color/gradientEnd"
+            app:fill_color="@color/fillColor"
+            app:filled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/routeToTransactionActivity" />
+            app:layout_constraintTop_toBottomOf="@+id/routeToAddRecordActivity"
+            app:orientation="top_bottom"
+            app:start_color="@color/gradientStart"
+            app:stroke="3dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
