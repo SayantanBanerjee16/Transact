@@ -66,7 +66,7 @@ class ScanningActivity : AppCompatActivity() {
                 val curState = State(transactionID, senderPhoneNumber, "ACCEPTED")
                 viewModel.saveStateToFirebase(curState)
                 viewModel.saveRecord(senderPhoneNumber, amount, parity, "ACCEPTED")
-                Toast.makeText(this, "Transaction Recorded", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Transaction Accepted", Toast.LENGTH_LONG).show()
                 super.onBackPressed()
             } else {
                 Toast.makeText(this, "Network connectivity isn\'t available", Toast.LENGTH_LONG)
@@ -83,7 +83,7 @@ class ScanningActivity : AppCompatActivity() {
                 val curState = State(transactionID, senderPhoneNumber, "REJECTED")
                 viewModel.saveStateToFirebase(curState)
                 viewModel.saveRecord(senderPhoneNumber, amount, parity, "REJECTED")
-                Toast.makeText(this, "Transaction Recorded", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Transaction Rejected", Toast.LENGTH_LONG).show()
                 super.onBackPressed()
             } else {
                 Toast.makeText(this, "Network connectivity isn\'t available", Toast.LENGTH_LONG)
@@ -144,13 +144,14 @@ class ScanningActivity : AppCompatActivity() {
         parity = contentsArray[4].toInt()
         transactionID = contentsArray[5]
 
+        binding.scanQR.visibility = View.GONE
         binding.detailsView.visibility = View.VISIBLE
         binding.senderContactNumber.text = senderPhoneNumber
-        binding.amountInvolved.text = amount.toString()
+        binding.amountInvolved.text = "Rs. $amount"
         if (parity == 1) {
-            binding.parity.text = "AMOUNT SENT BY YOU"
+            binding.parity.text = "You Sent Money"
         } else {
-            binding.parity.text = "AMOUNT RECEIVED TO YOU"
+            binding.parity.text = "You Received Money"
         }
     }
 }

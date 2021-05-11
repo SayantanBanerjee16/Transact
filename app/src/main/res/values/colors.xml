@@ -9,4 +9,6 @@
     <color name="gradientEnd">#4389A2</color>
     <color name="fillColor">#9EE6FF</color>
     <color name="deepBlue">#031983</color>
+    <color name="background">#83DCC4C2</color>
+    <color name="scanningActivityTextView">#0F1655</color>
 </resources>

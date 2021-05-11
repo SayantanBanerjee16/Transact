@@ -21,7 +21,7 @@
     <string name="generate_qr_code">GENERATE QR CODE</string>
     <string name="qr_code_place_holder">QR CODE PLACE HOLDER</string>
     <string name="activity_scanning">ACTIVITY SCANNING</string>
-    <string name="scan_qr_code_for_verification">Scan QR Code For Verification</string>
+    <string name="scan_qr_code_for_verification">Scan QR Code!</string>
     <string name="amount">AMOUNT</string>
     <string name="accept_transaction">Accept Transaction</string>
     <string name="reject_transaction">REJECT TRANSACTION</string>
@@ -29,4 +29,6 @@
     <string name="scanning_successful">Transaction Scanning done?</string>
     <string name="revoke_transaction">Revoke The Transaction</string>
     <string name="add_new_record">ADD NEW RECORD</string>
+    <string name="scan_record">VERIFICATION OF RECORDS</string>
+    <string name="sender_number">Sender Number</string>
 </resources>
