@@ -6,13 +6,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
+        android:padding="32dp"
         tools:context=".presenter.AddRecordActivityPackage.AddRecordActivity">
 
         <EditText
             android:id="@+id/phoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="60dp"
             android:hint="@string/enter_phone_number"
             android:importantForAutofill="no"
             android:inputType="textPhonetic"
@@ -25,6 +27,7 @@
             android:id="@+id/amountInvolved"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/enter_amount_involved"
             android:importantForAutofill="no"
@@ -37,6 +40,7 @@
             android:id="@+id/parityGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/amountInvolved">
@@ -54,14 +58,22 @@
                 android:text="@string/amount_received" />
         </RadioGroup>
 
-        <Button
+        <com.bartbergmans.gradientbutton.views.GradientButton
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="20dp"
             android:text="@string/generate_qr_code"
+            android:textColor="@android:color/white"
+            app:end_color="@color/gradientEnd"
+            app:filled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/parityGroup" />
+            app:layout_constraintTop_toBottomOf="@id/parityGroup"
+            app:orientation="top_bottom"
+            app:start_color="@color/gradientStart"
+            app:stroke="3dp" />
 
         <ImageView
             android:id="@+id/qrCode"
@@ -74,25 +86,45 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+
+        <com.bartbergmans.gradientbutton.views.GradientButton
             android:id="@+id/transactionSuccessful"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="20dp"
+            android:clickable="true"
+            android:padding="16dp"
             android:text="@string/scanning_successful"
             android:visibility="gone"
+            app:end_color="@color/gradientEnd"
+            app:fill_color="@color/fillColor"
+            app:filled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/qrCode" />
+            app:layout_constraintTop_toBottomOf="@id/qrCode"
+            app:orientation="top_bottom"
+            app:start_color="@color/gradientStart"
+            app:stroke="3dp" />
 
-        <Button
+        <com.bartbergmans.gradientbutton.views.GradientButton
             android:id="@+id/transactionRevoked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:clickable="true"
+            android:padding="16dp"
             android:text="@string/revoke_transaction"
             android:visibility="gone"
+            app:end_color="@color/gradientEnd"
+            app:filled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/transactionSuccessful" />
+            app:layout_constraintTop_toBottomOf="@id/transactionSuccessful"
+            app:orientation="top_bottom"
+            app:start_color="@color/gradientStart"
+            app:stroke="3dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

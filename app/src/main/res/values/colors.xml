@@ -5,4 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#FFFFFF</color>
     <color name="blue">#717DE9</color>
+    <color name="gradientStart">#5C258D</color>
+    <color name="gradientEnd">#4389A2</color>
+    <color name="fillColor">#9EE6FF</color>
 </resources>
