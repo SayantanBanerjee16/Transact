@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sayantanbanerjee.transactionmanagementapp.data.model.Record
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ItemTransactionBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
@@ -45,13 +47,16 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionVi
         @SuppressLint("SetTextI18n")
         fun bind(record: Record) {
             binding.receiverPhone.text = record.receiverContactNumber
-            binding.amount.text = record.amountInvolved.toString()
-            if(record.parity == 1){
+            binding.amount.text = "Rs. " + record.amountInvolved.toString()
+            if (record.parity == 1) {
                 binding.parity.text = "YOU SENT MONEY"
-            }else{
+            } else {
                 binding.parity.text = "YOU RECEIVED MONEY"
             }
             binding.status.text = record.status
+            val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH)
+            val dateTime = simpleDateFormat.format(record.timestamp.toLong() * 1000L)
+            binding.timestamp.text = dateTime
         }
     }
 
