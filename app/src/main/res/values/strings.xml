@@ -39,4 +39,5 @@
     <string name="exit_confirmation_message">If you exit, the following transaction will be discarded and not be recorded in your device.</string>
     <string name="exit_mssg">EXIT</string>
     <string name="cancel_mssg">CANCEL</string>
+    <string name="defaultGroupPerson">DISPLAYING RECORDS OF EVERYONE</string>
 </resources>

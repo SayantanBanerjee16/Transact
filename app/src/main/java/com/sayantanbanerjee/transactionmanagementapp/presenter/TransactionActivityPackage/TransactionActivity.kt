@@ -60,7 +60,9 @@ class TransactionActivity : AppCompatActivity() {
 
     private fun setSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            @SuppressLint("SetTextI18n")
             override fun onQueryTextSubmit(p0: String?): Boolean {
+                binding.personView.text = "TRANSACTIONS OF : $p0"
                 viewSearchedList(p0!!)
                 return false
             }
@@ -71,6 +73,7 @@ class TransactionActivity : AppCompatActivity() {
         })
 
         binding.searchView.setOnCloseListener {
+            binding.personView.text = getString(R.string.defaultGroupPerson)
             initRecyclerView()
             viewDefaultList()
             false

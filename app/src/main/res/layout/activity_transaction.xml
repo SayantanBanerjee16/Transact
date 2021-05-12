@@ -32,10 +32,25 @@
             app:srcCompat="@drawable/ic_baseline_update_24" />
 
         <TextView
-            android:id="@+id/acceptedSentSum"
+            android:id="@+id/personView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:drawablePadding="20dp"
+            android:padding="8dp"
+            android:text="@string/defaultGroupPerson"
+            android:textColor="@color/deepBlue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:drawableLeftCompat="@drawable/ic_baseline_supervisor_account_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+        <TextView
+            android:id="@+id/acceptedSentSum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:drawablePadding="20dp"
             android:padding="8dp"
             android:text="@string/accepted_sent_sum"
@@ -45,7 +60,7 @@
             app:drawableLeftCompat="@drawable/ic_baseline_trending_up_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+            app:layout_constraintTop_toBottomOf="@+id/personView" />
 
         <TextView
             android:id="@+id/receivedSum"
