@@ -1,6 +1,7 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -44,7 +45,7 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionVi
     inner class TransactionViewHolder(
         private val binding: ItemTransactionBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("SetTextI18n")
+        @SuppressLint("SetTextI18n", "SimpleDateFormat")
         fun bind(record: Record) {
             binding.receiverPhone.text = record.receiverContactNumber
             binding.amount.text = "Rs. " + record.amountInvolved.toString()
@@ -54,9 +55,18 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionVi
                 binding.parity.text = "YOU RECEIVED MONEY"
             }
             binding.status.text = record.status
-            val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH)
-            val dateTime = simpleDateFormat.format(record.timestamp.toLong() * 1000L)
+            val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy, hh.mm aa")
+            val dateTime = simpleDateFormat.format(record.timestamp.toLong())
             binding.timestamp.text = dateTime
+            val rnd = Random()
+            val currentColor: Int =
+                Color.argb(
+                    255,
+                    rnd.nextInt(50) + 200,
+                    rnd.nextInt(50) + 200,
+                    rnd.nextInt(50) + 200
+                )
+            binding.cardView.setCardBackgroundColor(currentColor)
         }
     }
 

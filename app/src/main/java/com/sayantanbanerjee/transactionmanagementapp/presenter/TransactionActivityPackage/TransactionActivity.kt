@@ -1,5 +1,6 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.sayantanbanerjee.transactionmanagementapp.R
@@ -39,11 +40,11 @@ class TransactionActivity : AppCompatActivity() {
         setSearchView()
 
         binding.updateFloatingActionButton.setOnClickListener {
-            if(NetworkConnectivity.isNetworkAvailable(this)){
+            if (NetworkConnectivity.isNetworkAvailable(this)) {
                 viewModel.getStateFromFirebase()
                 Toast.makeText(this, "Transactions are updated!", Toast.LENGTH_LONG)
                     .show()
-            }else{
+            } else {
                 Toast.makeText(this, "Network connectivity isn\'t available.", Toast.LENGTH_LONG)
                     .show()
             }
@@ -76,13 +77,14 @@ class TransactionActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun viewDefaultList() {
         viewModel.getSumSentAcceptedValue().observe(this, Observer {
-            binding.acceptedSentSum.text = it.toString()
+            binding.acceptedSentSum.text = "YOU GAVE (VERIFIED) : Rs. $it"
         })
 
         viewModel.getSumReceivedValue().observe(this, Observer {
-            binding.receivedSum.text = it.toString()
+            binding.receivedSum.text = "YOU RECEIVED (VERIFIED) : Rs. $it"
         })
 
         viewModel.getAllRecords().observe(this, {
@@ -90,13 +92,14 @@ class TransactionActivity : AppCompatActivity() {
         })
     }
 
+    @SuppressLint("SetTextI18n")
     private fun viewSearchedList(phoneNumber: String) {
         viewModel.getAcceptedSumSentOfAParticularContact(phoneNumber).observe(this, Observer {
-            binding.acceptedSentSum.text = it.toString()
+            binding.acceptedSentSum.text = "YOU GAVE (VERIFIED) : Rs. $it"
         })
 
         viewModel.getAcceptedSumReceivedOfAParticularContact(phoneNumber).observe(this, Observer {
-            binding.receivedSum.text = it.toString()
+            binding.receivedSum.text = "YOU RECEIVED (VERIFIED) : Rs. $it"
         })
 
         viewModel.getAllTransactionsRecordOfAParticularContact(phoneNumber).observe(this, {
