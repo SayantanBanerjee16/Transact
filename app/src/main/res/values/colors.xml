@@ -12,4 +12,6 @@
     <color name="background">#83DCC4C2</color>
     <color name="scanningActivityTextView">#0F1655</color>
     <color name="paleBlue">#C4A2A8D5</color>
+    <color name="indigo">#1B138B</color>
+    <color name="darkDeepOrange">#9C1309</color>
 </resources>

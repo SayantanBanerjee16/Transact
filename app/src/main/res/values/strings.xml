@@ -35,4 +35,8 @@
     <string name="activity_adding_transaction">TO ADD TRANSACTION</string>
     <string name="TIMESTAMP">TIMESTAMP</string>
     <string name="search_for_a_contact">Search for a contact</string>
+    <string name="exit_confirmation_title">Confirm Exit?</string>
+    <string name="exit_confirmation_message">If you exit, the following transaction will be discarded and not be recorded in your device.</string>
+    <string name="exit_mssg">EXIT</string>
+    <string name="cancel_mssg">CANCEL</string>
 </resources>

@@ -3,6 +3,7 @@ package com.sayantanbanerjee.transactionmanagementapp.presenter.AddRecordActivit
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -12,6 +13,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.sayantanbanerjee.transactionmanagementapp.R
 import com.sayantanbanerjee.transactionmanagementapp.data.preference.AppPreferenceHelper
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivityAddRecordBinding
+import com.yarolegovich.lovelydialog.LovelyStandardDialog
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,6 +29,8 @@ class AddRecordActivity : AppCompatActivity() {
     lateinit var factory: AddRecordViewModelFactory
 
     lateinit var viewModel: AddRecordViewModel
+
+    private var recordAdditionDone = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,6 +114,7 @@ class AddRecordActivity : AppCompatActivity() {
     }
 
     private fun afterScanningViewsSetup() {
+        recordAdditionDone = true
         binding.apply {
             phoneNumber.visibility = View.INVISIBLE
             amountInvolved.visibility = View.INVISIBLE
@@ -119,6 +124,36 @@ class AddRecordActivity : AppCompatActivity() {
             transactionSuccessful.visibility = View.VISIBLE
             qrCode.visibility = View.VISIBLE
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (recordAdditionDone) {
+                showExitConfirmationDialog()
+            } else {
+                super.onBackPressed()
+            }
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+    private fun showExitConfirmationDialog() {
+        LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.VERTICAL)
+            .setTopColorRes(R.color.indigo)
+            .setButtonsColorRes(R.color.white)
+            .setIcon(R.drawable.ic_baseline_exit_to_app_24)
+            .setTitle(R.string.exit_confirmation_title)
+            .setMessage(R.string.exit_confirmation_message)
+            .setPositiveButton(R.string.exit_mssg,
+                View.OnClickListener {
+                    Toast.makeText(this, "Transaction Revoked!", Toast.LENGTH_LONG).show()
+                    finish()
+                })
+            .setNegativeButton(R.string.cancel_mssg, View.OnClickListener {
+
+            })
+            .show()
     }
 
 }

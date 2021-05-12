@@ -6,6 +6,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,10 @@ import com.sayantanbanerjee.transactionmanagementapp.R
 import com.sayantanbanerjee.transactionmanagementapp.data.model.State
 import com.sayantanbanerjee.transactionmanagementapp.data.preference.AppPreferenceHelper
 import com.sayantanbanerjee.transactionmanagementapp.databinding.ActivityScanningBinding
+import com.yarolegovich.lovelydialog.LovelyStandardDialog
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class ScanningActivity : AppCompatActivity() {
@@ -28,6 +31,7 @@ class ScanningActivity : AppCompatActivity() {
     private var amount = 0
     private var parity = 0
     private var transactionID = ""
+    private var scanningDone = false
 
     private lateinit var binding: ActivityScanningBinding
 
@@ -66,7 +70,7 @@ class ScanningActivity : AppCompatActivity() {
                 val curState = State(transactionID, senderPhoneNumber, "ACCEPTED")
                 viewModel.saveStateToFirebase(curState)
                 viewModel.saveRecord(senderPhoneNumber, amount, parity, "ACCEPTED")
-                Toast.makeText(this, "Transaction Accepted", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Transaction Accepted and Recorded", Toast.LENGTH_LONG).show()
                 super.onBackPressed()
             } else {
                 Toast.makeText(this, "Network connectivity isn\'t available", Toast.LENGTH_LONG)
@@ -83,7 +87,7 @@ class ScanningActivity : AppCompatActivity() {
                 val curState = State(transactionID, senderPhoneNumber, "REJECTED")
                 viewModel.saveStateToFirebase(curState)
                 viewModel.saveRecord(senderPhoneNumber, amount, parity, "REJECTED")
-                Toast.makeText(this, "Transaction Rejected", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Transaction Rejected and Recorded", Toast.LENGTH_LONG).show()
                 super.onBackPressed()
             } else {
                 Toast.makeText(this, "Network connectivity isn\'t available", Toast.LENGTH_LONG)
@@ -144,6 +148,7 @@ class ScanningActivity : AppCompatActivity() {
         parity = contentsArray[4].toInt()
         transactionID = contentsArray[5]
 
+        scanningDone = true
         binding.scanQR.visibility = View.GONE
         binding.detailsView.visibility = View.VISIBLE
         binding.senderContactNumber.text = senderPhoneNumber
@@ -153,5 +158,35 @@ class ScanningActivity : AppCompatActivity() {
         } else {
             binding.parity.text = "You Received Money"
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (scanningDone) {
+                showExitConfirmationDialog()
+            } else {
+                super.onBackPressed()
+            }
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+    private fun showExitConfirmationDialog() {
+        LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.VERTICAL)
+            .setTopColorRes(R.color.indigo)
+            .setButtonsColorRes(R.color.white)
+            .setIcon(R.drawable.ic_baseline_exit_to_app_24)
+            .setTitle(R.string.exit_confirmation_title)
+            .setMessage(R.string.exit_confirmation_message)
+            .setPositiveButton(R.string.exit_mssg,
+                View.OnClickListener {
+                    Toast.makeText(this, "Transaction Discarded!", Toast.LENGTH_LONG).show()
+                    finish()
+                })
+            .setNegativeButton(R.string.cancel_mssg, View.OnClickListener {
+
+            })
+            .show()
     }
 }
