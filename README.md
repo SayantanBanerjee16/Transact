@@ -18,27 +18,27 @@ So the primary motivation in building this transaction recording application is 
 
 * First the user must be authenticated. Here user needs to suppply his mobile number, which is followed by an OTP verification.
 
-<img src="images/auth.png" width="200" height ="400">
+<img src="images/auth.jpg" width="200" height ="400">
 
 * Following is the home screen for the application. It holds 3 major buttons, i.e, to view transactions, to add transaction, or to verify transaction.
 
-<img src="images/home.png" width="200" height ="400">
+<img src="images/home.jpg" width="200" height ="400">
 
 * Now suppose Person A, having Mobile Number +918016314309 wants to add a record about Person having mobile number +919434792685. He enters all the details and thus the required QR is generated.
 
-<img src="images/addone.png" width="200" height ="400">  <img src="images/addtwo.png" width="200" height ="400">
+<img src="images/addone.jpg" width="200" height ="400">  <img src="images/addtwo.jpg" width="200" height ="400">
 
 * To verify, person B now scans the QR. He then accepts the transaction request.
 
-<img src="images/scanone.png" width="200" height ="400">  <img src="images/scantwo.png" width="200" height ="400">
+<img src="images/scanone.jpg" width="200" height ="400">  <img src="images/scantwo.jpg" width="200" height ="400">
 
 * Now we can see that both records got successfully stored in their respective mobile. Left image is corresponding to Person A and right image is of Person B.
 
-<img src="images/addview.png" width="200" height ="400">  <img src="images/scannerview.png" width="200" height ="400">
+<img src="images/addview.jpg" width="200" height ="400">  <img src="images/scannerview.jpg" width="200" height ="400">
 
 * Also additionally we can query transaction record based on a particular contact.
 
-<img src="images/queryview.png" width="200" height ="400">
+<img src="images/queryview.jpg" width="200" height ="400">
 
 ## Code structure
 
