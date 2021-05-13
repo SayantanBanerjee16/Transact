@@ -14,6 +14,31 @@ Suppose there are two parties involved in the transaction. Let us name them Part
 
 So the primary motivation in building this transaction recording application is to build a verification layer over the recordings so that any of the transactions recorded in this application is adequately trusted and verified by both parties involved in that transaction.
 
+## Application Screenshots
+
+* First the user must be authenticated. Here user needs to suppply his mobile number, which is followed by an OTP verification.
+
+<img src="images/auth.png" width="200" height ="400">
+
+* Following is the home screen for the application. It holds 3 major buttons, i.e, to view transactions, to add transaction, or to verify transaction.
+
+<img src="images/home.png" width="200" height ="400">
+
+* Now suppose Person A, having Mobile Number +918016314309 wants to add a record about Person having mobile number +919434792685. He enters all the details and thus the required QR is generated.
+
+<img src="images/addone.png" width="200" height ="400">  <img src="images/addtwo.png" width="200" height ="400">
+
+* To verify, person B now scans the QR. He then accepts the transaction request.
+
+<img src="images/scanone.png" width="200" height ="400">  <img src="images/scantwo.png" width="200" height ="400">
+
+* Now we can see that both records got successfully stored in their respective mobile. Left image is corresponding to Person A and right image is of Person B.
+
+<img src="images/addview.png" width="200" height ="400">  <img src="images/scannerview.png" width="200" height ="400">
+
+* Also additionally we can query transaction record based on a particular contact.
+
+<img src="images/queryview.png" width="200" height ="400">
 
 ## Code structure
 
@@ -24,7 +49,7 @@ This application is created mainly by keeping Clean Code MVVM Architecture into 
 What are the Different Layers of the Project?
 
 - **Data layer:** Would dispense the required data for the application to the domain layer by implementing interface exposed by the domain.
-  - **Remote Database:** 
+  - **Remote Database:** Firebase Realtime Database is used to exchange the acceptance/rejecection states for the transaction records.
   - **Local Database:** The Room persistence library provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite. Defining the Room entity, setting up the DAO Interface and building the Database Builder is done in this layer.
 
 - **Domain layer:** This will be the most generic layer of the three. It will connect the presentation layer with the data layer. This is the layer where app-related business logic will be executed. All the application use-cases and the repositories interfaces reside in the domain layer.
