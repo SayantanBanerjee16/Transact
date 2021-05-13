@@ -14,9 +14,14 @@ Suppose there are two parties involved in the transaction. Let us name them Part
 
 So the primary motivation in building this transaction recording application is to build a verification layer over the recordings so that any of the transactions recorded in this application is adequately trusted and verified by both parties involved in that transaction.
 
+## Usage
+
+For installation and usage of this application
+Navigate to: [/APK/Transact.apk](https://github.com/SayantanBanerjee16/Transact/tree/main/APK) download and install the application into your android phones. <Recommended Android 8.0(Oreo) version and above>
+
 ## Application Screenshots
 
-* First the user must be authenticated. Here user needs to suppply his mobile number, which is followed by an OTP verification.
+* First the user must be authenticated. Here user needs to supply his mobile number, which is followed by an OTP verification.
 
 <img src="images/auth.jpg" width="200" height ="400">
 

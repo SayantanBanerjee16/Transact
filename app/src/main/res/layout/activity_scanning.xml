@@ -94,7 +94,7 @@
                 android:textColor="@color/scanningActivityTextView"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:drawableLeftCompat="@drawable/ic_baseline_compare_arrows_24" />
+                app:drawableLeftCompat="@drawable/ic_baseline_compare_arrows_48" />
 
 
             <com.bartbergmans.gradientbutton.views.GradientButton

@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presenter.ScanningActivityPackage.ScanningActivity" />
+        <activity android:name=".presenter.ScanningActivityPackage.ScanningActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presenter.AddRecordActivityPackage.AddRecordActivity"
             android:screenOrientation="portrait" />
