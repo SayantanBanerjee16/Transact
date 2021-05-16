@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUseCase
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveStateToFirebaseUseCase
 
+// View Model Factory class for the [ScanningViewModel.kt].
 class ScanningViewModelFactory(
     private val saveRecordUseCase: SaveRecordUseCase,
     private val saveStateToFirebaseUseCase: SaveStateToFirebaseUseCase

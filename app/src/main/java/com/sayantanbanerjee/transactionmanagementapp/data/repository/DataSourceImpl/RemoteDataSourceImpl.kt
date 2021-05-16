@@ -13,7 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
+// Class defining the functionality to the methods described in the [RemoteDataSource.kt] interface.
 class RemoteDataSourceImpl(
     private val sharedPreferences: SharedPreferences,
     private val recordLocalDataSource: RecordLocalDataSource

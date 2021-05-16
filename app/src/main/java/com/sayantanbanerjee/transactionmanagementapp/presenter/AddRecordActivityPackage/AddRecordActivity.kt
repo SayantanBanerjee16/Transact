@@ -17,6 +17,8 @@ import com.yarolegovich.lovelydialog.LovelyStandardDialog
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+// Activity to add a new record to the database.
+// After entering the respective fields, a QR code is generated which is then scanned by the other party.
 @AndroidEntryPoint
 class AddRecordActivity : AppCompatActivity() {
 
@@ -38,6 +40,7 @@ class AddRecordActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_record)
         viewModel = ViewModelProvider(this, factory).get(AddRecordViewModel::class.java)
 
+        // Pressing this button takes all the entry fields and then proceeds to generate the QR code.
         binding.saveButton.setOnClickListener {
             val phoneNumber = binding.phoneNumber.editText?.text.toString()
             val amount = binding.amountInvolved.editText?.text.toString()
@@ -50,7 +53,8 @@ class AddRecordActivity : AppCompatActivity() {
                 Toast.makeText(this, "Fields cannot be left empty!", Toast.LENGTH_SHORT).show()
             } else {
 
-                afterScanningViewsSetup()
+                // set-up the respective views
+                afterQRGeneratedViewsSetup()
 
                 val minePhoneNumber = AppPreferenceHelper(sharedPreferences).getUserMobileNumber()
                 val recordNumber = AppPreferenceHelper(sharedPreferences).getRecordNumber()
@@ -69,7 +73,7 @@ class AddRecordActivity : AppCompatActivity() {
                 inputForQREncryption += recordNumber
 
 
-
+                // QR code is generated and displayed.
                 try {
                     val barcodeEncoder = BarcodeEncoder()
                     val bitmap = barcodeEncoder.encodeBitmap(
@@ -92,6 +96,8 @@ class AddRecordActivity : AppCompatActivity() {
             }
         }
 
+
+        // Action to perform when Successful scanning is done. Record is saved to the local database.
         binding.transactionSuccessful.setOnClickListener {
             val phoneNumber = binding.phoneNumber.editText?.text.toString()
             val amount = binding.amountInvolved.editText?.text.toString()
@@ -107,13 +113,15 @@ class AddRecordActivity : AppCompatActivity() {
             super.onBackPressed()
         }
 
+        // Action to perform when record is discarded.
         binding.transactionRevoked.setOnClickListener {
             Toast.makeText(this, "Transaction Revoked!", Toast.LENGTH_LONG).show()
             super.onBackPressed()
         }
     }
 
-    private fun afterScanningViewsSetup() {
+    // Setting up the views after QR is generated.
+    private fun afterQRGeneratedViewsSetup() {
         recordAdditionDone = true
         binding.apply {
             phoneNumber.visibility = View.INVISIBLE
@@ -126,6 +134,7 @@ class AddRecordActivity : AppCompatActivity() {
         }
     }
 
+    // To detect the Back button, to trigger the dialog only when user already generated the QR.
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (recordAdditionDone) {
@@ -138,6 +147,7 @@ class AddRecordActivity : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
+    // Dialog shown when the QR code is generated and user presses on the back button, to confirm User exit.
     private fun showExitConfirmationDialog() {
         LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.VERTICAL)
             .setTopColorRes(R.color.indigo)

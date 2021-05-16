@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
 
+// View Model Factory class for the [TransactionViewModel.kt].
 class TransactionViewModelFactory(
     private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
     private val getSumReceivedUseCase: GetSumReceivedUseCase,

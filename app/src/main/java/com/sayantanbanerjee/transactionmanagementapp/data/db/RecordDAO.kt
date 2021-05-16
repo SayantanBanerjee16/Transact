@@ -8,8 +8,8 @@ import androidx.room.Query
 import com.sayantanbanerjee.transactionmanagementapp.data.model.Record
 import kotlinx.coroutines.flow.Flow
 
-// DAO Interface which defines all the methods which queries SQL statements into the database,
-// and the resultant required data is returned as required.
+// DAO Interface defines all the methods which queries SQL statements into the database,
+// and the resultant data is returned as required.
 @Dao
 interface RecordDAO {
 

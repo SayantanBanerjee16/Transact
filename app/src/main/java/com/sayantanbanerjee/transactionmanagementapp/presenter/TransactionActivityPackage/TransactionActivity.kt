@@ -17,6 +17,9 @@ import com.sayantanbanerjee.transactionmanagementapp.presenter.AddRecordActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+// Activity to display all the records in a recycler view.
+// Initially all the records are displayed,
+// But we can filter records based on a particular contact too.
 @AndroidEntryPoint
 class TransactionActivity : AppCompatActivity() {
 
@@ -39,6 +42,7 @@ class TransactionActivity : AppCompatActivity() {
         viewDefaultList()
         setSearchView()
 
+        // Update the transactions state by fetching it from the firebase.
         binding.updateFloatingActionButton.setOnClickListener {
             if (NetworkConnectivity.isNetworkAvailable(this)) {
                 viewModel.getStateFromFirebase()
@@ -53,11 +57,13 @@ class TransactionActivity : AppCompatActivity() {
 
     }
 
+    // Initialize the Recycler View.
     private fun initRecyclerView() {
         binding.transactionRecyclerView.adapter = transactionAdapter
         binding.transactionRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 
+    // Setting up the custom query search view.
     private fun setSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             @SuppressLint("SetTextI18n")
@@ -80,6 +86,7 @@ class TransactionActivity : AppCompatActivity() {
         }
     }
 
+    // Fetching all the records from the local database and also the related accepted sum sent and received.
     @SuppressLint("SetTextI18n")
     private fun viewDefaultList() {
         viewModel.getSumSentAcceptedValue().observe(this, Observer {
@@ -95,6 +102,8 @@ class TransactionActivity : AppCompatActivity() {
         })
     }
 
+    // Fetching all the records from the local database of a particular contact,
+    // i.e, based on the searched query and also the related accepted sum sent and received.
     @SuppressLint("SetTextI18n")
     private fun viewSearchedList(phoneNumber: String) {
         viewModel.getAcceptedSumSentOfAParticularContact(phoneNumber).observe(this, Observer {

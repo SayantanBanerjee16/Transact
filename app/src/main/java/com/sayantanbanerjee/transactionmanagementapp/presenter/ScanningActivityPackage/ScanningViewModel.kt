@@ -8,6 +8,7 @@ import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveRecordUs
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.SaveStateToFirebaseUseCase
 import kotlinx.coroutines.launch
 
+// View Model Class for the [ScanningActivity.kt].
 class ScanningViewModel(
     private val saveRecordUseCase: SaveRecordUseCase,
     private val saveStateToFirebaseUseCase: SaveStateToFirebaseUseCase

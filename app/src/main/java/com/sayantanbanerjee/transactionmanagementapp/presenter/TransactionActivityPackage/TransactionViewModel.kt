@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
 import kotlinx.coroutines.flow.collect
 
+// View Model Class for the [TransactionActivity.kt].
 class TransactionViewModel(
     private val getAcceptedSumSentUseCase: GetAcceptedSumSentUseCase,
     private val getSumReceivedUseCase: GetSumReceivedUseCase,

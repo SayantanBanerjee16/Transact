@@ -22,7 +22,8 @@ import com.yarolegovich.lovelydialog.LovelyStandardDialog
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
+// Activity to scan the QR code for verification.
+// After successful scanning, the fields are displayed, and user can accept or reject the transaction.
 @AndroidEntryPoint
 class ScanningActivity : AppCompatActivity() {
 
@@ -52,6 +53,7 @@ class ScanningActivity : AppCompatActivity() {
 
         resetViewsAndData()
 
+        // Initialize QR scanner once user presses on it.
         binding.scanQR.setOnClickListener {
             val integrator = IntentIntegrator(this)
             integrator.setOrientationLocked(false)
@@ -62,6 +64,7 @@ class ScanningActivity : AppCompatActivity() {
             integrator.initiateScan()
         }
 
+        // Record the transaction as accepted and save to local database if user accepts the transaction.
         binding.acceptButton.setOnClickListener {
             if (NetworkConnectivity.isNetworkAvailable(this)) {
                 var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
@@ -79,6 +82,7 @@ class ScanningActivity : AppCompatActivity() {
 
         }
 
+        // Record the transaction as rejected nd save to local database if user rejects the transaction.
         binding.rejectButton.setOnClickListener {
             if (NetworkConnectivity.isNetworkAvailable(this)) {
                 var record = AppPreferenceHelper(sharedPreferences).getRecordNumber()
@@ -96,6 +100,7 @@ class ScanningActivity : AppCompatActivity() {
         }
     }
 
+    // Getting the QR data after it is scanned.
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
@@ -110,6 +115,9 @@ class ScanningActivity : AppCompatActivity() {
         }
     }
 
+    // After QR code is scanned, it is checked first.
+    // Firstly, the pattern is matched to the format for a transaction QR, if not, then exit.
+    // Next if the QR format is correctly to a transaction, it is checked if the transaction is meant for the person scanning the QR.
     private fun checkCode(contents: String) {
         val contentsArray = contents.split(";").toTypedArray()
         val startCode = contentsArray[0]
@@ -130,6 +138,7 @@ class ScanningActivity : AppCompatActivity() {
 
     }
 
+    // resetting views and data.
     private fun resetViewsAndData() {
         senderPhoneNumber = ""
         myPhoneNumber = ""
@@ -139,6 +148,7 @@ class ScanningActivity : AppCompatActivity() {
         binding.detailsView.visibility = View.GONE
     }
 
+    // Setting up views and data after scanning the QR.
     @SuppressLint("SetTextI18n")
     private fun setViewAndData(contentsArray: Array<String>) {
 
@@ -160,6 +170,7 @@ class ScanningActivity : AppCompatActivity() {
         }
     }
 
+    // To detect the Back button, to trigger the dialog only when user already scanned the QR.
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (scanningDone) {
@@ -172,6 +183,7 @@ class ScanningActivity : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
+    // Dialog shown when the QR code is already scanned and user presses on the back button, to confirm User exit.
     private fun showExitConfirmationDialog() {
         LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.VERTICAL)
             .setTopColorRes(R.color.indigo)

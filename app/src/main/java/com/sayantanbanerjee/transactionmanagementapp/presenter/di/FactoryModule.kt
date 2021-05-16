@@ -1,7 +1,6 @@
 package com.sayantanbanerjee.transactionmanagementapp.presenter.di
 
 import com.sayantanbanerjee.transactionmanagementapp.domain.UseCase.*
-import com.sayantanbanerjee.transactionmanagementapp.presenter.AddRecordActivityPackage.AddRecordViewModel
 import com.sayantanbanerjee.transactionmanagementapp.presenter.AddRecordActivityPackage.AddRecordViewModelFactory
 import com.sayantanbanerjee.transactionmanagementapp.presenter.ScanningActivityPackage.ScanningViewModelFactory
 import com.sayantanbanerjee.transactionmanagementapp.presenter.TransactionActivityPackage.TransactionViewModelFactory
@@ -11,6 +10,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+// FactoryModule creates the dependency injection for the different View Model Factories of the project defined in the Presenter section.
 @Module
 @InstallIn(SingletonComponent::class)
 class FactoryModule {

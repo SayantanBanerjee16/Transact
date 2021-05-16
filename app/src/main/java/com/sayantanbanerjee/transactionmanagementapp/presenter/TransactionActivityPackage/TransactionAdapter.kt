@@ -12,6 +12,7 @@ import com.sayantanbanerjee.transactionmanagementapp.databinding.ItemTransaction
 import java.text.SimpleDateFormat
 import java.util.*
 
+// Adapter code to display all the transaction items in the recycler view in [TransactionActivity.kt].
 class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
     private val callback = object : DiffUtil.ItemCallback<Record>() {

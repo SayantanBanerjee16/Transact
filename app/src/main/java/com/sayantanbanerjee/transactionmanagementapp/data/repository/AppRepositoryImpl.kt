@@ -7,7 +7,7 @@ import com.sayantanbanerjee.transactionmanagementapp.data.repository.DataSource.
 import com.sayantanbanerjee.transactionmanagementapp.domain.repository.AppRepository
 import kotlinx.coroutines.flow.Flow
 
-// Class defining the functionality to the methods described in the [AppRepository.kt] interface in the Domain section
+// Class defining the functionality to the methods described in the [AppRepository.kt] interface in the Domain section.
 class AppRepositoryImpl(
     private val recordLocalDataSource: RecordLocalDataSource,
     private val remoteDataSource: RemoteDataSource

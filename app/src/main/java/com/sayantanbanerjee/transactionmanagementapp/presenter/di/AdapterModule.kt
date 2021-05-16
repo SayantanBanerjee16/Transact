@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+// AdapterModule creates the dependency injection for the adapters defined in the Presenter section.
 @Module
 @InstallIn(SingletonComponent::class)
 class AdapterModule {
