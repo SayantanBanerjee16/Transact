@@ -54,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addNewRecordHeading"
-            app:layout_constraintVertical_bias="0.25">
+            app:layout_constraintVertical_bias="0.051">
 
             <TextView
                 android:id="@+id/sender_contact_number"
