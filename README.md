@@ -19,6 +19,10 @@ So the primary motivation in building this transaction recording application is 
 For installation and usage of this application
 Navigate to: [/APK/Transact.apk](https://github.com/SayantanBanerjee16/Transact/tree/main/APK) download and install the application into your android phones. <Recommended Android 8.0(Oreo) version and above>
 
+## Demo Video
+
+* <a href="https://www.linkedin.com/posts/sayantan-banerjee-iiitgwalior_android-development-project-activity-6800293488912039936-g3eP"> **Video presentation post** </a>
+
 ## Application Screenshots
 
 * First the user must be authenticated. Here user needs to supply his mobile number, which is followed by an OTP verification.
@@ -109,3 +113,29 @@ What are the Different Layers of the Project?
 ## Author
 
 * <a href="https://www.linkedin.com/in/sayantan-banerjee-iiitgwalior/">  **Sayantan Banerjee** </a>
+
+## License
+
+```
+MIT License
+
+Copyright (c) 2021 Sayantan Banerjee
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
